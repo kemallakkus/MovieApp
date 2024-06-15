@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">MovieApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="skip">Skip</string>
+    <string name="back">Back</string>
+    <string name="next">Next</string>
+    <string name="finish">Finish</string>
+    <string name="onboarding_title_1">Welcome to Movie App</string>
+    <string name="onboarding_title_2">This App is For You</string>
+    <string name="onboarding_desc_1">You can discover the latest movie content in this application.</string>
+    <string name="onboarding_desc_2">You can discover the latest movie content in this application.</string>
 </resources>

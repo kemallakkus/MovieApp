@@ -1,5 +1,6 @@
 [versions]
 agp = "8.2.1"
+coilGif = "2.1.0"
 coreSplashscreen = "1.0.1"
 datastorePreferences = "1.1.1"
 hilt = "2.50"
@@ -11,6 +12,7 @@ espressoCore = "3.5.1"
 appcompat = "1.7.0"
 landscapistGlide = "2.1.9"
 leakcanaryAndroid = "2.10"
+lottie = "6.1.0"
 material = "1.12.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
@@ -23,9 +25,11 @@ glide = "4.12.0"
 [libraries]
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
+coil-gif = { module = "io.coil-kt:coil-gif", version.ref = "coilGif" }
 hilt-android-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
 landscapist-glide-v219 = { module = "com.github.skydoves:landscapist-glide", version.ref = "landscapistGlide" }
 leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanaryAndroid" }
+lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }

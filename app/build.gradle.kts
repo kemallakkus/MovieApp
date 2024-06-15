@@ -28,6 +28,11 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -75,6 +80,6 @@ dependencies {
     // Leak Canary
     debugImplementation (libs.leakcanary.android)
 
-    // Splash Api
-    implementation(libs.androidx.core.splashscreen)
+    // Lottie
+    implementation(libs.lottie)
 }
