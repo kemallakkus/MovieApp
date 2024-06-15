@@ -1,6 +1,11 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    id ("com.android.application")
+    id ("org.jetbrains.kotlin.android")
+    id ("kotlin-kapt")
+    id ("dagger.hilt.android.plugin")
+    id ("androidx.navigation.safeargs")
+    id ("kotlin-parcelize")
+    id ("org.jlleitschuh.gradle.ktlint") version "11.0.0"
 }
 
 android {
@@ -34,12 +39,42 @@ android {
 
 dependencies {
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation (libs.androidx.core.ktx)
+    implementation (libs.androidx.appcompat)
+    implementation (libs.material)
+    implementation (libs.androidx.constraintlayout)
+    testImplementation (libs.junit)
+    androidTestImplementation (libs.androidx.junit)
+    androidTestImplementation (libs.androidx.espresso.core)
+
+    // Hilt
+    implementation (libs.hilt.android)
+    kapt (libs.hilt.compiler)
+
+    // Navigation
+    implementation (libs.navigation.fragment.ktx)
+    implementation (libs.navigation.ui.ktx)
+
+    // Glide
+    implementation (libs.landscapist.glide.v219)
+
+    // ViewModel
+    implementation (libs.lifecycle.viewmodel.ktx)
+    implementation (libs.activity.ktx)
+
+    // Retrofit
+    implementation (libs.retrofit)
+    implementation (libs.retrofit.gson)
+
+    // Coroutines
+    implementation (libs.coroutines.android)
+
+    // Preferences DataStore
+    implementation (libs.androidx.datastore.preferences)
+
+    // Leak Canary
+    debugImplementation (libs.leakcanary.android)
+
+    // Splash Api
+    implementation(libs.androidx.core.splashscreen)
 }
