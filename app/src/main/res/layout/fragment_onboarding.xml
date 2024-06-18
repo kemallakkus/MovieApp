@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:layout_marginBottom="24dp"
-        android:background="@drawable/bg_button_left"
+        android:background="@drawable/bg_rate"
         android:text="@string/next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
