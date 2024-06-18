@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id ("com.android.application")
     id ("org.jetbrains.kotlin.android")
@@ -8,6 +10,15 @@ plugins {
     id ("org.jlleitschuh.gradle.ktlint") version "11.0.0"
     id ("org.jetbrains.kotlin.plugin.serialization") version "1.8.21"
 }
+
+val localProperties = Properties().apply {
+    val localPropertiesFile = rootProject.file("local.properties")
+    if (localPropertiesFile.exists()) {
+        localPropertiesFile.reader().use { load(it) }
+    }
+}
+
+val apiKey = localProperties.getProperty("API_KEY") ?: System.getenv("API_KEY")
 
 android {
     namespace = "com.example.movieapp"
@@ -25,12 +36,21 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
+            buildConfigField("String", "API_KEY", "\"$apiKey\"")
+        }
+
+        debug {
+            isMinifyEnabled = false
+            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
+            buildConfigField("String", "API_KEY", "\"$apiKey\"")
         }
     }
 
     buildFeatures {
+        buildConfig = true
         viewBinding = true
     }
 

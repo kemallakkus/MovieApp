@@ -6,5 +6,5 @@ import com.example.movieapp.domain.model.Movie
 import kotlinx.coroutines.flow.Flow
 
 interface MoviesRepository {
-    suspend fun getMovies(sources: List<String>): Flow<PagingData<ResultDto>>
+    fun getMovies(): Flow<PagingData<Movie>>
 }

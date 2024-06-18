@@ -6,6 +6,8 @@ import com.example.movieapp.util.Constants.ZERO_INT
 
 object Constants {
 
+    var TOKEN = ""
+
     const val BASE_URL = "https://api.themoviedb.org/"
 
     const val API_KEY = "327115d62c1938f5194a8aa089d38286"
