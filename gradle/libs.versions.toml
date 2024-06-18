@@ -10,12 +10,14 @@ junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
 appcompat = "1.7.0"
+kotlinxSerializationJson = "1.5.1"
 landscapistGlide = "2.1.9"
 leakcanaryAndroid = "2.10"
 lottie = "6.1.0"
 material = "1.12.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
+pagingRuntime = "3.3.0"
 retrofit = "2.9.0"
 coroutines = "1.8.0"
 lifecycle = "2.8.2"
@@ -25,8 +27,11 @@ glide = "4.12.0"
 [libraries]
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
+androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "pagingRuntime" }
+androidx-paging-runtime-ktx = { module = "androidx.paging:paging-runtime-ktx", version.ref = "pagingRuntime" }
 coil-gif = { module = "io.coil-kt:coil-gif", version.ref = "coilGif" }
 hilt-android-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 landscapist-glide-v219 = { module = "com.github.skydoves:landscapist-glide", version.ref = "landscapistGlide" }
 leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanaryAndroid" }
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }

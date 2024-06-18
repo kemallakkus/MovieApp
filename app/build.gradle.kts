@@ -6,6 +6,7 @@ plugins {
     id ("androidx.navigation.safeargs")
     id ("kotlin-parcelize")
     id ("org.jlleitschuh.gradle.ktlint") version "11.0.0"
+    id ("org.jetbrains.kotlin.plugin.serialization") version "1.8.21"
 }
 
 android {
@@ -82,4 +83,10 @@ dependencies {
 
     // Lottie
     implementation(libs.lottie)
+
+    // Kotlinx Serialization
+    implementation (libs.kotlinx.serialization.json)
+
+    // Paging 3
+    implementation(libs.androidx.paging.runtime.ktx)
 }
