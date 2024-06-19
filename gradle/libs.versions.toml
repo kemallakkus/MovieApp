@@ -13,12 +13,15 @@ appcompat = "1.7.0"
 kotlinxSerializationJson = "1.5.1"
 landscapistGlide = "2.1.9"
 leakcanaryAndroid = "2.10"
+library = "4.0.0"
+libraryNoOp = "3.5.2"
 lottie = "6.1.0"
 material = "1.12.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
 pagingRuntime = "3.3.0"
 retrofit = "2.9.0"
+retrofit2KotlinxSerializationConverter = "1.0.0"
 coroutines = "1.8.0"
 lifecycle = "2.8.2"
 navigation = "2.7.7"
@@ -34,6 +37,8 @@ hilt-android-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-p
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 landscapist-glide-v219 = { module = "com.github.skydoves:landscapist-glide", version.ref = "landscapistGlide" }
 leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanaryAndroid" }
+library = { module = "com.github.chuckerteam.chucker:library", version.ref = "library" }
+library-no-op = { module = "com.github.chuckerteam.chucker:library-no-op", version.ref = "libraryNoOp" }
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
@@ -43,6 +48,7 @@ activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activ
 navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
 navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+retrofit2-kotlinx-serialization-converter = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofit2KotlinxSerializationConverter" }
 glide = { module = "com.github.skydoves:landscapist-glide", version.ref = "glide" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }

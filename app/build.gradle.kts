@@ -34,6 +34,12 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true
@@ -49,10 +55,6 @@ android {
         }
     }
 
-    buildFeatures {
-        buildConfig = true
-        viewBinding = true
-    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -109,4 +111,10 @@ dependencies {
 
     // Paging 3
     implementation(libs.androidx.paging.runtime.ktx)
+
+    // Chucker for debugging purposes
+    debugImplementation (libs.library)
+    releaseImplementation (libs.library.no.op)
+
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
 }

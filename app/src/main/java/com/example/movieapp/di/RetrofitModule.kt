@@ -1,12 +1,14 @@
 package com.example.movieapp.di
 
-import com.example.movieapp.BuildConfig
+import android.content.Context
+import com.chuckerteam.chucker.api.ChuckerInterceptor
+import com.example.movieapp.BuildConfig.BASE_URL
 import com.example.movieapp.data.network.AuthTokenInterceptor
 import com.example.movieapp.data.source.remote.MovieService
-import com.example.movieapp.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -20,11 +22,19 @@ object RetrofitModule {
 
     @Provides
     @Singleton
+    fun provideChuckerInterceptor(@ApplicationContext context: Context): ChuckerInterceptor {
+        return ChuckerInterceptor.Builder(context).build()
+    }
+
+    @Provides
+    @Singleton
     fun provideOkHttpClient(
         authTokenInterceptor: AuthTokenInterceptor,
+        chuckerInterceptor: ChuckerInterceptor,
     ): OkHttpClient {
         return OkHttpClient.Builder().apply {
             addInterceptor(authTokenInterceptor)
+            addInterceptor(chuckerInterceptor)
             readTimeout(60L, TimeUnit.SECONDS)
             connectTimeout(60L, TimeUnit.SECONDS)
             writeTimeout(60L, TimeUnit.SECONDS)

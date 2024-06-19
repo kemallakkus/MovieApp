@@ -9,12 +9,15 @@ import java.util.Locale
 fun List<ResultDto>?.toDomain() = this?.map {
     Movie(
         id = it.id.orZero(),
-        title = it.title.orEmpty(),
+        name = it.name.orEmpty(),
         originalLanguage = it.originalLanguage.orEmpty(),
+        originalName = it.originalName.orEmpty(),
         overview = it.overview.orEmpty(),
         popularity = it.popularity.orZero(),
         backdropPath = it.backdropPath.orEmpty(),
+        firstAirDate = it.firstAirDate.orEmpty(),
         genreIds = it.genreIds.orEmpty(),
+        originCountry = it.originCountry.orEmpty(),
         posterPath = IMAGE_URL + it.posterPath.orEmpty(),
         voteAverage = it.voteAverage?.toFloat().orZero(),
         voteAverageFormat = String.format(Locale.US, "%.1f", it.voteAverage.orZero()),

@@ -38,8 +38,8 @@ class HomeAdapter(
         fun bind(item: Movie) {
             with(binding) {
                 ivMovie.loadImage(item.posterPath)
-                tvMovieName.text = item.title
-                tvMovieDate.text = item.releaseDate
+                tvMovieName.text = item.name
+                tvMovieDate.text = item.firstAirDate
                 tvMovieRate.text = item.voteAverage.toString()
                 root.setOnClickListener {
                     onMovieClick(item.id)

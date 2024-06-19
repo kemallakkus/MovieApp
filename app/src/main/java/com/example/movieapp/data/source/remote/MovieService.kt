@@ -1,7 +1,6 @@
 package com.example.movieapp.data.source.remote
 
 import com.example.movieapp.data.dto.MovieDto
-import com.example.movieapp.util.Constants.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -9,7 +8,6 @@ import retrofit2.http.Query
 interface MovieService {
     @GET("discover/tv")
     suspend fun getMovies(
-        @Query("api_key") apiKey: String = API_KEY,
         @Query("include_adult") includeAdult: Boolean = false,
         @Query("include_null_first_air_dates") includeNullFirstAirDates: Boolean = false,
         @Query("language") language: String = "en-US",
