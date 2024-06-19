@@ -10,10 +10,12 @@ import javax.inject.Inject
 
 class AuthTokenInterceptor @Inject constructor() : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
-        TOKEN = BuildConfig.API_KEY
         val original = chain.request()
-        val requestBuilder = original.newBuilder()
-            .header("Authorization", "Bearer ${BuildConfig.API_KEY}")
+        val originalUrl = original.url
+        val url = originalUrl.newBuilder()
+            .addQueryParameter("api_key", BuildConfig.API_KEY)
+            .build()
+        val requestBuilder = original.newBuilder().url(url)
         val request = requestBuilder.build()
         return chain.proceed(request)
     }
