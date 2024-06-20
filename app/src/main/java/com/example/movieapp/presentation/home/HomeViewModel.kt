@@ -6,12 +6,16 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.movieapp.domain.model.Movie
 import com.example.movieapp.domain.usecases.MoviesUsesCases
+import com.example.movieapp.util.Constants.EMPTY_STRING
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,6 +26,9 @@ class HomeViewModel @Inject constructor(
     private val _homeState = MutableStateFlow(HomeState())
     val homeState: StateFlow<HomeState> = _homeState
 
+    private val _effect = MutableSharedFlow<HomeEffect>()
+    val effect: SharedFlow<HomeEffect> = _effect
+
     init {
         getMovies()
     }
@@ -29,8 +36,9 @@ class HomeViewModel @Inject constructor(
     fun onEvent(event: HomeEvent) {
         when (event) {
             is HomeEvent.MovieClicked -> {
-//                _homeState.update {
-//                    it.copy(effect = HomeEffect.GoToDetail(event.id)) }
+                viewModelScope.launch {
+                    _effect.emit(HomeEffect.GoToDetail(event.id))
+                }
             }
         }
     }
@@ -55,5 +63,5 @@ sealed interface HomeEffect {
 data class HomeState(
     val movies: PagingData<Movie> = PagingData.empty(),
     val isLoading: Boolean = false,
-    val error: String = ""
+    val error: String = EMPTY_STRING,
 )

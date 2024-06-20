@@ -6,18 +6,18 @@ import com.example.movieapp.util.Constants.ZERO_FLOAT
 import com.example.movieapp.util.Constants.ZERO_INT
 
 data class Movie(
-    val id: Int,
-    val name: String,
-    val originalLanguage: String,
-    val originalName: String,
-    val overview: String,
-    val popularity: Double,
-    val backdropPath: String,
-    val firstAirDate: String,
-    val genreIds: List<Int>,
-    val originCountry: List<String>,
-    val posterPath: String,
-    val voteAverage: Float,
-    val voteAverageFormat: String,
-    val voteCount: Int
+    val id: Int = ZERO_INT,
+    val name: String = EMPTY_STRING,
+    val originalLanguage: String = EMPTY_STRING,
+    val originalName: String = EMPTY_STRING,
+    val overview: String = EMPTY_STRING,
+    val popularity: Double = ZERO_DOUBLE,
+    val backdropPath: String = EMPTY_STRING,
+    val firstAirDate: String = EMPTY_STRING,
+    val genreIds: List<Int> = emptyList(),
+    val originCountry: List<String> = emptyList(),
+    val posterPath: String = EMPTY_STRING,
+    val voteAverage: Float = ZERO_FLOAT,
+    val voteAverageFormat: String = EMPTY_STRING,
+    val voteCount: Int = ZERO_INT
 )

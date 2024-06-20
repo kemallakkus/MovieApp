@@ -2,6 +2,7 @@ package com.example.movieapp.data.source.remote
 
 import com.example.movieapp.data.dto.DetailDto
 import com.example.movieapp.data.dto.MovieDto
+import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -21,5 +22,5 @@ interface MovieService {
     suspend fun getDetail(
         @Path("series_id") seriesId: Int,
         @Query("language") language: String = "en-US",
-    ): Response<DetailDto>
+    ): DetailDto
 }

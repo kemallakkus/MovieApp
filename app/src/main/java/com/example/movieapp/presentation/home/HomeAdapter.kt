@@ -41,10 +41,15 @@ class HomeAdapter(
                 tvMovieName.text = item.name
                 tvMovieDate.text = item.firstAirDate
                 tvMovieRate.text = item.voteAverageFormat
+                scoreCircleView.setScore(item.voteAverage)
                 root.setOnClickListener {
                     onMovieClick(item.id)
                 }
             }
+        }
+
+        fun bindScore(score: Float) {
+            binding.scoreCircleView.setScore(score)
         }
     }
 

@@ -1,6 +1,7 @@
 package com.example.movieapp.di
 
 import com.example.movieapp.domain.repository.MoviesRepository
+import com.example.movieapp.domain.usecases.GetDetailUseCase
 import com.example.movieapp.domain.usecases.GetMoviesUseCase
 import com.example.movieapp.domain.usecases.MoviesUsesCases
 import dagger.Binds
@@ -22,7 +23,8 @@ object UseCasesModule {
         moviesRepository: MoviesRepository
     ): MoviesUsesCases {
         return MoviesUsesCases(
-            getMovies = GetMoviesUseCase(moviesRepository)
+            getMovies = GetMoviesUseCase(moviesRepository),
+            getDetail = GetDetailUseCase(moviesRepository)
         )
     }
 }

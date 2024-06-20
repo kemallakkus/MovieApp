@@ -8,7 +8,10 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.example.movieapp.R
 import com.example.movieapp.common.extentions.gone
@@ -32,7 +35,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -45,8 +48,22 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             binding.rvMovies.adapter = homeAdapter
 
             viewLifecycleOwner.lifecycleScope.launch {
+                viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    viewModel.effect.collect { effect ->
+                        when (effect) {
+                            is HomeEffect.GoToDetail -> {
+                                val bundle = Bundle().apply {
+                                    putInt("id", effect.id)
+                                }
+                                findNavController().navigate(R.id.action_homeFragment_to_detailFragment, bundle)
+                            }
+                        }
+                    }
+                }
+            }
+
+            viewLifecycleOwner.lifecycleScope.launch {
                 homeAdapter.loadStateFlow.collect { loadState ->
-                    // Burada, yükleme durumunu kontrol edebilir ve UI güncelleyebilirsiniz
                     when (loadState.refresh) {
                         is LoadState.Loading -> {
                             rvMovies.gone()
@@ -66,7 +83,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         }
                     }
                 }
-
             }
 
             viewLifecycleOwner.lifecycleScope.launch {
@@ -78,7 +94,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun onMovieClick(id: Int) {
-        //viewModel.setEvent(SearchEvent.ProductClicked(id))
+        viewModel.onEvent(HomeEvent.MovieClicked(id))
     }
 
     override fun onDestroyView() {

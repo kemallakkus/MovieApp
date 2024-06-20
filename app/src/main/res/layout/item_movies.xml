@@ -32,16 +32,26 @@
 
     </androidx.cardview.widget.CardView>
 
+    <com.example.movieapp.util.ScoreCircleView
+        android:id="@+id/scoreCircleView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_rate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_movie_rate"
+        app:layout_constraintBottom_toTopOf="@id/tv_movie_rate"
+        />
+
     <TextView
         android:id="@+id/tv_movie_rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_image"
         app:layout_constraintBottom_toTopOf="@id/tv_movie_name"
-        android:layout_marginTop="-18dp"
-        android:layout_marginStart="8dp"
-        android:background="@drawable/bg_rate"
+        android:layout_marginTop="-12dp"
         tools:text="7.5 %"
         android:textColor="@color/white"
         android:textSize="11sp"
@@ -51,9 +61,10 @@
         android:id="@+id/tv_movie_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/tv_movie_rate"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_movie_rate"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="16dp"
         tools:text="Movie"
         android:textSize="15sp"
         android:fontFamily="@font/worksans_bold"/>
@@ -62,10 +73,11 @@
         android:id="@+id/tv_movie_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/tv_movie_name"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_movie_name"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginVertical="6dp"
+        android:layout_marginStart="16dp"
         tools:text="15.10.2020"
         android:textSize="15sp"
         android:fontFamily="@font/worksans_regular"/>
