@@ -1,31 +1,29 @@
 package com.example.movieapp.data.dto
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
 
-@Serializable
 data class ResultDto(
     val adult: Boolean? = null,
-    @SerialName("backdrop_path")
+    @SerializedName("backdrop_path")
     val backdropPath: String? = null,
-    @SerialName("first_air_date")
+    @SerializedName("first_air_date")
     val firstAirDate: String? = null,
-    @SerialName("genre_ids")
+    @SerializedName("genre_ids")
     val genreIds: List<Int>? = null,
     val id: Int? = null,
     val name: String? = null,
-    @SerialName("origin_country")
+    @SerializedName("origin_country")
     val originCountry: List<String>? = null,
-    @SerialName("original_language")
+    @SerializedName("original_language")
     val originalLanguage: String? = null,
-    @SerialName("original_name")
+    @SerializedName("original_name")
     val originalName: String? = null,
     val overview: String? = null,
     val popularity: Double? = null,
-    @SerialName("poster_path")
+    @SerializedName("poster_path")
     val posterPath: String? = null,
-    @SerialName("vote_average")
+    @SerializedName("vote_average")
     val voteAverage: Double? = null,
-    @SerialName("vote_count")
+    @SerializedName("vote_count")
     val voteCount: Int? = null,
 )

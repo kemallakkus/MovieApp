@@ -12,6 +12,6 @@ interface MovieService {
         @Query("include_null_first_air_dates") includeNullFirstAirDates: Boolean = false,
         @Query("language") language: String = "en-US",
         @Query("page") page: Int = 1,
-        @Query("sort_by") sortBy: String = "popularity.desc",
+        @Query("sort_by") sortBy: String = "popularity.desc"
     ): Response<MovieDto>
 }

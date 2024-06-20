@@ -1,5 +1,6 @@
 package com.example.movieapp.data.repository
 
+import android.util.Log
 import androidx.paging.PagingData
 import com.example.movieapp.data.mapper.toDomain
 import com.example.movieapp.data.network.BaseRepository
@@ -19,8 +20,11 @@ class MovieRepositoryImpl @Inject constructor(
         return safeApiCallPaging { page, _ ->
             safeApiCall {
                 movieService.getMovies(page = page)
-            }.map {
-                it.results.toDomain()
+            }.map { result ->
+                result.results?.forEach {
+                    Log.d("API Response", "ResultDto: $it")
+                }
+                result.results.toDomain()
             }
         }
     }

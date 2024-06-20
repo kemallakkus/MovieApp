@@ -22,8 +22,8 @@ object Constants {
     const val ZERO_FLOAT = 0f
 }
 
-fun Int?.orZero() = this ?: ZERO_INT
-fun Float?.orZero() = this ?: ZERO_FLOAT
-fun Double?.orZero() = this ?: ZERO_DOUBLE
-fun Boolean?.orFalse() = this ?: false
-fun Boolean?.orTrue() = this ?: true
+fun Int?.orZero() = this ?: 0
+fun Double?.orZero() = this ?: 0.0
+fun Float?.orZero() = this ?: 0f
+fun String?.orEmpty() = this ?: ""
+fun <T> List<T>?.orEmpty() = this ?: emptyList()

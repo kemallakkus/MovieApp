@@ -40,7 +40,7 @@ class HomeAdapter(
                 ivMovie.loadImage(item.posterPath)
                 tvMovieName.text = item.name
                 tvMovieDate.text = item.firstAirDate
-                tvMovieRate.text = item.voteAverage.toString()
+                tvMovieRate.text = item.voteAverageFormat
                 root.setOnClickListener {
                     onMovieClick(item.id)
                 }

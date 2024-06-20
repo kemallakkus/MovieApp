@@ -1,26 +1,31 @@
 package com.example.movieapp.data.mapper
 
+import android.util.Log
 import com.example.movieapp.data.dto.ResultDto
 import com.example.movieapp.domain.model.Movie
 import com.example.movieapp.util.APIConst.IMAGE_URL
 import com.example.movieapp.util.orZero
 import java.util.Locale
 
-fun List<ResultDto>?.toDomain() = this?.map {
+fun List<ResultDto>?.toDomain() = this?.map { dto ->
+    Log.d("Mapper", "Mapping ResultDto: $dto")
     Movie(
-        id = it.id.orZero(),
-        name = it.name.orEmpty(),
-        originalLanguage = it.originalLanguage.orEmpty(),
-        originalName = it.originalName.orEmpty(),
-        overview = it.overview.orEmpty(),
-        popularity = it.popularity.orZero(),
-        backdropPath = it.backdropPath.orEmpty(),
-        firstAirDate = it.firstAirDate.orEmpty(),
-        genreIds = it.genreIds.orEmpty(),
-        originCountry = it.originCountry.orEmpty(),
-        posterPath = IMAGE_URL + it.posterPath.orEmpty(),
-        voteAverage = it.voteAverage?.toFloat().orZero(),
-        voteAverageFormat = String.format(Locale.US, "%.1f", it.voteAverage.orZero()),
-        voteCount = it.voteCount.orZero()
+        id = dto.id.orZero(),
+        name = dto.name.orEmpty(),
+        originalLanguage = dto.originalLanguage.orEmpty(),
+        originalName = dto.originalName.orEmpty(),
+        overview = dto.overview.orEmpty(),
+        popularity = dto.popularity.orZero(),
+        backdropPath = IMAGE_URL + dto.backdropPath.orEmpty(),
+        firstAirDate = dto.firstAirDate.orEmpty(),
+        genreIds = dto.genreIds.orEmpty(),
+        originCountry = dto.originCountry.orEmpty(),
+        posterPath = getImageUrl(dto.posterPath.orEmpty()),
+        voteAverage = dto.voteAverage?.toFloat().orZero(),
+        voteAverageFormat = String.format(Locale.US, "%.1f", dto.voteAverage.orZero()) + " %",
+        voteCount = dto.voteCount.orZero()
     )
 }.orEmpty()
+
+
+private fun getImageUrl(posterImage: String) = "https://image.tmdb.org/t/p/w500/$posterImage"
