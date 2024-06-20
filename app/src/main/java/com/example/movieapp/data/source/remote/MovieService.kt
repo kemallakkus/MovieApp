@@ -1,8 +1,10 @@
 package com.example.movieapp.data.source.remote
 
+import com.example.movieapp.data.dto.DetailDto
 import com.example.movieapp.data.dto.MovieDto
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MovieService {
@@ -14,4 +16,10 @@ interface MovieService {
         @Query("page") page: Int = 1,
         @Query("sort_by") sortBy: String = "popularity.desc"
     ): Response<MovieDto>
+
+    @GET("tv/{series_id}")
+    suspend fun getDetail(
+        @Path("series_id") seriesId: Int,
+        @Query("language") language: String = "en-US",
+    ): Response<DetailDto>
 }

@@ -70,8 +70,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
 
             viewLifecycleOwner.lifecycleScope.launch {
-                viewModel.homePaging.collectLatest { pagingData ->
-                    homeAdapter.submitData(pagingData)
+                viewModel.homeState.collectLatest { pagingData ->
+                    homeAdapter.submitData(pagingData.movies)
                 }
             }
         }
