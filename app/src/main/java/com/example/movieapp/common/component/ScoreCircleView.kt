@@ -1,4 +1,4 @@
-package com.example.movieapp.util
+package com.example.movieapp.common.component
 
 import android.content.Context
 import android.graphics.Canvas
@@ -24,7 +24,7 @@ class ScoreCircleView @JvmOverloads constructor(
 
     fun setScore(score: Float) {
         this.score = score
-        invalidate() // Redraw the view
+        invalidate()
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -38,7 +38,7 @@ class ScoreCircleView @JvmOverloads constructor(
             height - paint.strokeWidth / 2
         )
 
-        paint.color = 0xFF00FF00.toInt() // Green color
+        paint.color = 0xFF00FF00.toInt()
         canvas.drawArc(rect, 270f, angle, false, paint)
     }
 }
