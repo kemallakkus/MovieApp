@@ -1,8 +1,8 @@
-package com.example.movieapp.util
+package com.example.movieapp.common.util
 
-import com.example.movieapp.util.Constants.ZERO_DOUBLE
-import com.example.movieapp.util.Constants.ZERO_FLOAT
-import com.example.movieapp.util.Constants.ZERO_INT
+import com.example.movieapp.common.util.Constants.ZERO_DOUBLE
+import com.example.movieapp.common.util.Constants.ZERO_FLOAT
+import com.example.movieapp.common.util.Constants.ZERO_INT
 
 object Constants {
 

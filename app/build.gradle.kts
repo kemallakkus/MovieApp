@@ -1,14 +1,14 @@
 import java.util.Properties
 
 plugins {
-    id ("com.android.application")
-    id ("org.jetbrains.kotlin.android")
-    id ("kotlin-kapt")
-    id ("dagger.hilt.android.plugin")
-    id ("androidx.navigation.safeargs")
-    id ("kotlin-parcelize")
-    id ("org.jlleitschuh.gradle.ktlint") version "11.0.0"
-    id ("org.jetbrains.kotlin.plugin.serialization") version "1.8.21"
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
+    id("androidx.navigation.safeargs")
+    id("kotlin-parcelize")
+    id("org.jlleitschuh.gradle.ktlint") version "11.0.0"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.8.21"
 }
 
 val localProperties = Properties().apply {
@@ -31,7 +31,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.example.movieapp.HiltTestRunner"
     }
 
 
@@ -67,55 +67,91 @@ android {
 
 dependencies {
 
-    implementation (libs.androidx.core.ktx)
-    implementation (libs.androidx.appcompat)
-    implementation (libs.material)
-    implementation (libs.androidx.constraintlayout)
-    testImplementation (libs.junit)
-    androidTestImplementation (libs.androidx.junit)
-    androidTestImplementation (libs.androidx.espresso.core)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.constraintlayout)
 
     // Hilt
-    implementation (libs.hilt.android)
-    kapt (libs.hilt.compiler)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
     // Navigation
-    implementation (libs.navigation.fragment.ktx)
-    implementation (libs.navigation.ui.ktx)
+    implementation(libs.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
 
     // Glide
-    implementation (libs.landscapist.glide.v219)
+    implementation(libs.landscapist.glide.v219)
 
     // ViewModel
-    implementation (libs.lifecycle.viewmodel.ktx)
-    implementation (libs.activity.ktx)
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.activity.ktx)
 
     // Retrofit
-    implementation (libs.retrofit)
-    implementation (libs.retrofit.gson)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
 
     // Coroutines
-    implementation (libs.coroutines.android)
+    implementation(libs.coroutines.android)
 
     // Preferences DataStore
-    implementation (libs.androidx.datastore.preferences)
+    implementation(libs.androidx.datastore.preferences)
 
     // Leak Canary
-    debugImplementation (libs.leakcanary.android)
+    debugImplementation(libs.leakcanary.android)
 
     // Lottie
     implementation(libs.lottie)
 
     // Kotlinx Serialization
-    implementation (libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.serialization.json)
 
     // Paging 3
     implementation(libs.androidx.paging.runtime.ktx)
 
     // Chucker for debugging purposes
-    debugImplementation (libs.library)
-    releaseImplementation (libs.library.no.op)
+    debugImplementation(libs.library)
+    releaseImplementation(libs.library.no.op)
 
     implementation(libs.retrofit2.kotlinx.serialization.converter)
 
+//    // Coroutines Test
+//    testImplementation(libs.kotlinx.coroutines.test)
+//
+//    // AndroidX Test - Core library
+//    testImplementation(libs.androidx.core)
+//    testImplementation(libs.androidx.junit.v112)
+//    testImplementation(libs.androidx.runner)
+//    testImplementation(libs.androidx.rules)
+//
+//    // Robolectric
+//    testImplementation(libs.robolectric)
+//
+//    // Espresso
+//    androidTestImplementation(libs.androidx.espresso.core.v340)
+//
+//    // Unit Test
+//    testImplementation(libs.junit)
+//    testImplementation(libs.mockito.mockito.core)
+//    testImplementation(libs.mockito.inline)
+//    testImplementation(libs.kotlinx.coroutines.test.v152)
+//
+//    // AndroidX Test - JVM testing
+//    androidTestImplementation(libs.androidx.junit)
+//    androidTestImplementation(libs.core.ktx)
+//
+//    // Android Instrumentation Test
+//    androidTestImplementation(libs.androidx.junit.v113)
+//    androidTestImplementation(libs.androidx.espresso.core)
+//    androidTestImplementation(libs.androidx.espresso.contrib)
+//    androidTestImplementation(libs.androidx.espresso.intents)
+//    androidTestImplementation(libs.androidx.espresso.idling.resource)
+//    androidTestImplementation(libs.androidx.core.testing)
+//
+//    // Hilt Testing
+//    androidTestImplementation(libs.hilt.android.testing)
+//    kaptAndroidTest(libs.hilt.android.compiler)
+//
+//    // Fragment Testing
+//    androidTestImplementation (libs.androidx.fragment.testing)
 }

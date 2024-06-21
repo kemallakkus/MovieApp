@@ -1,9 +1,8 @@
-package com.example.movieapp.data.network
+package com.example.movieapp.common.base
 
-import com.example.movieapp.util.Resource
+import com.example.movieapp.common.util.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import org.json.JSONObject
 import retrofit2.Response
 
 abstract class BaseRepository {

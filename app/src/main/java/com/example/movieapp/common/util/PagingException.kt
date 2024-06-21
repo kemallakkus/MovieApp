@@ -1,6 +1,6 @@
-package com.example.movieapp.util
+package com.example.movieapp.common.util
 
-import com.example.movieapp.util.Constants.EMPTY_STRING
+import com.example.movieapp.common.util.Constants.EMPTY_STRING
 
 class PagingException(
     val error: String = EMPTY_STRING,

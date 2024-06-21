@@ -6,7 +6,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.movieapp.domain.model.Movie
 import com.example.movieapp.domain.usecases.MoviesUsesCases
-import com.example.movieapp.util.Constants.EMPTY_STRING
+import com.example.movieapp.common.util.Constants.EMPTY_STRING
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow

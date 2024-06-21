@@ -9,8 +9,8 @@ import com.example.movieapp.domain.usecases.MoviesUsesCases
 import com.example.movieapp.presentation.home.HomeEffect
 import com.example.movieapp.presentation.home.HomeEvent
 import com.example.movieapp.presentation.home.HomeState
-import com.example.movieapp.util.Constants.EMPTY_STRING
-import com.example.movieapp.util.Resource
+import com.example.movieapp.common.util.Constants.EMPTY_STRING
+import com.example.movieapp.common.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -50,14 +50,13 @@ class DetailViewModel @Inject constructor(
         }
     }
 
-    fun getDetail(id: Int) {
+    private fun getDetail(id: Int) {
         viewModelScope.launch {
             val detail = moviesUsesCases.getDetail(id)
             _detailState.value = DetailState(detail = detail)
         }
     }
 }
-
 
 data class DetailState(
     val detail: Detail = Detail(),

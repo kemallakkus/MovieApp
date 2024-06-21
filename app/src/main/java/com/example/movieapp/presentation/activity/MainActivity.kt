@@ -1,9 +1,7 @@
-package com.example.movieapp
+package com.example.movieapp.presentation.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.movieapp.common.viewBinding
 import com.example.movieapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint

@@ -1,7 +1,7 @@
 package com.example.movieapp.data.network
 
 import com.example.movieapp.BuildConfig
-import com.example.movieapp.util.Constants.TOKEN
+import com.example.movieapp.common.util.Constants.TOKEN
 import okhttp3.Interceptor
 import okhttp3.Response
 import javax.inject.Inject

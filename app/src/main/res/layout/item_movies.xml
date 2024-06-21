@@ -32,7 +32,7 @@
 
     </androidx.cardview.widget.CardView>
 
-    <com.example.movieapp.util.ScoreCircleView
+    <com.example.movieapp.common.component.ScoreCircleView
         android:id="@+id/scoreCircleView"
         android:layout_width="50dp"
         android:layout_height="50dp"

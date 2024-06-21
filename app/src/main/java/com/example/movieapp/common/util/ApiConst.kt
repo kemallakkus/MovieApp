@@ -1,4 +1,4 @@
-package com.example.movieapp.util
+package com.example.movieapp.common.util
 
 object APIConst {
     const val IMAGE_URL = "https://image.tmdb.org/t/p/w500"

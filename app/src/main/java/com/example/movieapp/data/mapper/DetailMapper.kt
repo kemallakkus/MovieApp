@@ -2,9 +2,9 @@ package com.example.movieapp.data.mapper
 
 import com.example.movieapp.data.dto.DetailDto
 import com.example.movieapp.domain.model.Detail
-import com.example.movieapp.util.APIConst.IMAGE_URL
-import com.example.movieapp.util.APIConst.ORIGINAL_IMAGE_URL
-import com.example.movieapp.util.orZero
+import com.example.movieapp.common.util.APIConst.IMAGE_URL
+import com.example.movieapp.common.util.APIConst.ORIGINAL_IMAGE_URL
+import com.example.movieapp.common.util.orZero
 import java.util.Locale
 
 fun DetailDto.toDomain() = Detail(
