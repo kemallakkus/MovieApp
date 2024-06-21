@@ -47,10 +47,6 @@ class HomeAdapter(
                 }
             }
         }
-
-        fun bindScore(score: Float) {
-            binding.scoreCircleView.setScore(score)
-        }
     }
 
     class HomeDiffUtilCallBack : DiffUtil.ItemCallback<Movie>() {
@@ -72,7 +68,5 @@ class HomeAdapter(
             }
         }
     }
-
 }
-
 private const val ITEM_CHANGE = "itemChange"
