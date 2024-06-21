@@ -44,26 +44,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(binding) {
-            binding.rvMovies.adapter = homeAdapter
+        binding.rvMovies.adapter = homeAdapter
 
-            viewLifecycleOwner.lifecycleScope.launch {
-                viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    viewModel.effect.collect { effect ->
-                        when (effect) {
-                            is HomeEffect.GoToDetail -> {
-                                val bundle = Bundle().apply {
-                                    putInt("id", effect.id)
-                                }
-                                findNavController().navigate(R.id.action_homeFragment_to_detailFragment, bundle)
-                            }
-                        }
-                    }
-                }
-            }
+        collectEffect()
+        collectState()
+        collectLoadState()
+    }
 
-            viewLifecycleOwner.lifecycleScope.launch {
-                homeAdapter.loadStateFlow.collect { loadState ->
+    private fun collectLoadState() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            homeAdapter.loadStateFlow.collect { loadState ->
+                with(binding) {
                     when (loadState.refresh) {
                         is LoadState.Loading -> {
                             rvMovies.gone()
@@ -84,17 +75,36 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     }
                 }
             }
+        }
+    }
 
-            viewLifecycleOwner.lifecycleScope.launch {
-                viewModel.homeState.collectLatest { pagingData ->
-                    homeAdapter.submitData(pagingData.movies)
+    private fun collectState() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.state.collectLatest { pagingData ->
+                homeAdapter.submitData(pagingData.movies)
+            }
+        }
+    }
+
+    private fun collectEffect() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.effect.collect { effect ->
+                    when (effect) {
+                        is HomeEffect.GoToDetail -> {
+                            val bundle = Bundle().apply {
+                                putInt("id", effect.id)
+                            }
+                            findNavController().navigate(R.id.action_homeFragment_to_detailFragment, bundle)
+                        }
+                    }
                 }
             }
         }
     }
 
     private fun onMovieClick(id: Int) {
-        viewModel.onEvent(HomeEvent.MovieClicked(id))
+        viewModel.setEvent(HomeEvent.MovieClicked(id))
     }
 
     override fun onDestroyView() {

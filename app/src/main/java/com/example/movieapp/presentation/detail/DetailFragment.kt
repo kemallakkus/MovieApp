@@ -44,28 +44,36 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         with(binding) {
 
             ivBack.setOnClickListener {
-                viewModel.onEvent(DetailEvent.BackClicked)
+                viewModel.setEvent(DetailEvent.BackClicked)
             }
 
+            collectEffect()
+            collectState()
+        }
+    }
 
-            viewLifecycleOwner.lifecycleScope.launch {
-                viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    viewModel.effect.collect { effect ->
-                        when (effect) {
-                            DetailEffect.GoToBack -> {
-                                findNavController().navigateUp()
-                            }
-                        }
-                    }
-                }
-            }
-
+    private fun collectState() {
+        with(binding) {
             lifecycleScope.launch {
                 viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    viewModel.detailState.collectLatest { data ->
+                    viewModel.state.collectLatest { data ->
                         ivMovie.loadImage(data.detail.posterPath)
                         tvMovieName.text = data.detail.name
                         tvMovieOverview.text = data.detail.overview
+                    }
+                }
+            }
+        }
+    }
+
+    private fun collectEffect() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.effect.collect { effect ->
+                    when (effect) {
+                        DetailEffect.GoToBack -> {
+                            findNavController().navigateUp()
+                        }
                     }
                 }
             }

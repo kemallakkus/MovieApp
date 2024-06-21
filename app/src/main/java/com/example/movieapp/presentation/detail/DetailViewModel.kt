@@ -3,6 +3,10 @@ package com.example.movieapp.presentation.detail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.movieapp.common.base.BaseViewModel
+import com.example.movieapp.common.base.Effect
+import com.example.movieapp.common.base.Event
+import com.example.movieapp.common.base.State
 import com.example.movieapp.data.dto.DetailDto
 import com.example.movieapp.domain.model.Detail
 import com.example.movieapp.domain.usecases.MoviesUsesCases
@@ -26,13 +30,19 @@ import javax.inject.Inject
 class DetailViewModel @Inject constructor(
     private val moviesUsesCases: MoviesUsesCases,
     saveStateHandle: SavedStateHandle
-) : ViewModel() {
+) : BaseViewModel<DetailEvent, DetailState, DetailEffect>() {
 
-    private val _detailState = MutableStateFlow(DetailState())
-    val detailState: StateFlow<DetailState> = _detailState
+    override fun setInitialState() = DetailState(isLoading = false)
 
-    private val _effect = MutableSharedFlow<DetailEffect>()
-    val effect: SharedFlow<DetailEffect> = _effect
+    override fun handleEvents(event: DetailEvent) {
+        when (event) {
+            DetailEvent.BackClicked -> {
+                setEffect {
+                    DetailEffect.GoToBack
+                }
+            }
+        }
+    }
 
     init {
         saveStateHandle.get<Int>("id")?.let {
@@ -40,20 +50,10 @@ class DetailViewModel @Inject constructor(
         }
     }
 
-    fun onEvent(event: DetailEvent) {
-        when (event) {
-            DetailEvent.BackClicked -> {
-                viewModelScope.launch {
-                    _effect.emit(DetailEffect.GoToBack)
-                }
-            }
-        }
-    }
-
     private fun getDetail(id: Int) {
         viewModelScope.launch {
             val detail = moviesUsesCases.getDetail(id)
-            _detailState.value = DetailState(detail = detail)
+            setState { copy(detail = detail) }
         }
     }
 }
@@ -62,12 +62,12 @@ data class DetailState(
     val detail: Detail = Detail(),
     val isLoading: Boolean = false,
     val error: String = EMPTY_STRING,
-)
+): State
 
-sealed interface DetailEvent {
+sealed interface DetailEvent: Event {
     data object BackClicked : DetailEvent
 }
 
-sealed interface DetailEffect {
+sealed interface DetailEffect: Effect {
     data object GoToBack : DetailEffect
 }
