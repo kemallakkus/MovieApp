@@ -26,7 +26,6 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 
     private val viewModel by viewModels<DetailViewModel>()
     private var _binding: FragmentDetailBinding? = null
-    private val args: DetailFragmentArgs by navArgs()
 
     private val binding: FragmentDetailBinding
         get() = _binding!!
@@ -41,8 +40,6 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        //viewModel.getDetail(args.id)
 
         with(binding) {
 
@@ -66,7 +63,6 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
             lifecycleScope.launch {
                 viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                     viewModel.detailState.collectLatest { data ->
-                        Log.d("asdfasdasd", "Data: $data")
                         ivMovie.loadImage(data.detail.posterPath)
                         tvMovieName.text = data.detail.name
                         tvMovieOverview.text = data.detail.overview
