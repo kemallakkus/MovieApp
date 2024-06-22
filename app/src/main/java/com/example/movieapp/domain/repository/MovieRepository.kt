@@ -5,7 +5,7 @@ import com.example.movieapp.domain.model.Detail
 import com.example.movieapp.domain.model.Movie
 import kotlinx.coroutines.flow.Flow
 
-interface MoviesRepository {
+interface MovieRepository {
     fun getMovies(): Flow<PagingData<Movie>>
 
     suspend fun getDetail(id: Int): Detail

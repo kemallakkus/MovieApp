@@ -1,6 +1,6 @@
 package com.example.movieapp.di
 
-import com.example.movieapp.domain.repository.MoviesRepository
+import com.example.movieapp.domain.repository.MovieRepository
 import com.example.movieapp.domain.usecases.GetDetailUseCase
 import com.example.movieapp.domain.usecases.GetMoviesUseCase
 import com.example.movieapp.domain.usecases.MoviesUsesCases
@@ -17,7 +17,7 @@ object UseCasesModule {
     @Provides
     @ViewModelScoped
     fun provideMoviesUseCases(
-        moviesRepository: MoviesRepository
+        moviesRepository: MovieRepository
     ): MoviesUsesCases {
         return MoviesUsesCases(
             getMovies = GetMoviesUseCase(moviesRepository),

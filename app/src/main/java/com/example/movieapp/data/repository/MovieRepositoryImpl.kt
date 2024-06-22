@@ -7,14 +7,14 @@ import com.example.movieapp.data.source.remote.MovieService
 import com.example.movieapp.data.source.remote.safeApiCallPaging
 import com.example.movieapp.domain.model.Detail
 import com.example.movieapp.domain.model.Movie
-import com.example.movieapp.domain.repository.MoviesRepository
+import com.example.movieapp.domain.repository.MovieRepository
 import com.example.movieapp.common.util.map
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class MovieRepositoryImpl @Inject constructor(
     private val movieService: MovieService,
-) : BaseRepository(), MoviesRepository {
+) : BaseRepository(), MovieRepository {
 
     override fun getMovies(): Flow<PagingData<Movie>> {
         return safeApiCallPaging { page, _ ->
