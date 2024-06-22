@@ -10,9 +10,10 @@
 
 ## Screenshots
 
-![Screenshot_1719091542](https://github.com/kemallakkus/MovieApp/assets/105845393/507bc94f-fa4b-485f-bd54-9feec4d5c72d)
-
-![Screenshot_1719091546](https://github.com/kemallakkus/MovieApp/assets/105845393/8ff3851e-b1eb-4ea9-a340-151e02081339)
+<div style="display: flex; flex-direction: row;">
+  <img src="https://github.com/kemallakkus/MovieApp/assets/105845393/507bc94f-fa4b-485f-bd54-9feec4d5c72d" alt="Home Screen" width="400"/>
+  <img src="https://github.com/kemallakkus/MovieApp/assets/105845393/8ff3851e-b1eb-4ea9-a340-151e02081339" alt="Detail Screen" width="400"/>
+</div>
 
 ## Technologies
 
