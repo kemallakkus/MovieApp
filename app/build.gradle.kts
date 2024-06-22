@@ -115,44 +115,4 @@ dependencies {
     releaseImplementation(libs.library.no.op)
 
     implementation(libs.retrofit2.kotlinx.serialization.converter)
-
-//    // Coroutines Test
-//    testImplementation(libs.kotlinx.coroutines.test)
-//
-//    // AndroidX Test - Core library
-//    testImplementation(libs.androidx.core)
-//    testImplementation(libs.androidx.junit.v112)
-//    testImplementation(libs.androidx.runner)
-//    testImplementation(libs.androidx.rules)
-//
-//    // Robolectric
-//    testImplementation(libs.robolectric)
-//
-//    // Espresso
-//    androidTestImplementation(libs.androidx.espresso.core.v340)
-//
-//    // Unit Test
-//    testImplementation(libs.junit)
-//    testImplementation(libs.mockito.mockito.core)
-//    testImplementation(libs.mockito.inline)
-//    testImplementation(libs.kotlinx.coroutines.test.v152)
-//
-//    // AndroidX Test - JVM testing
-//    androidTestImplementation(libs.androidx.junit)
-//    androidTestImplementation(libs.core.ktx)
-//
-//    // Android Instrumentation Test
-//    androidTestImplementation(libs.androidx.junit.v113)
-//    androidTestImplementation(libs.androidx.espresso.core)
-//    androidTestImplementation(libs.androidx.espresso.contrib)
-//    androidTestImplementation(libs.androidx.espresso.intents)
-//    androidTestImplementation(libs.androidx.espresso.idling.resource)
-//    androidTestImplementation(libs.androidx.core.testing)
-//
-//    // Hilt Testing
-//    androidTestImplementation(libs.hilt.android.testing)
-//    kaptAndroidTest(libs.hilt.android.compiler)
-//
-//    // Fragment Testing
-//    androidTestImplementation (libs.androidx.fragment.testing)
 }
