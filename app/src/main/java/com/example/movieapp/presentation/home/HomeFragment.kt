@@ -14,6 +14,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.example.movieapp.R
+import com.example.movieapp.common.base.BaseFragment
 import com.example.movieapp.common.extentions.gone
 import com.example.movieapp.common.extentions.visible
 import com.example.movieapp.databinding.FragmentHomeBinding
@@ -22,33 +23,38 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
     private val viewModel by viewModels<HomeViewModel>()
-    private var _binding: FragmentHomeBinding? = null
     private val homeAdapter by lazy {
         HomeAdapter(::onMovieClick)
     }
 
-    private val binding: FragmentHomeBinding
-        get() = _binding!!
+    override fun setupViews() {
+        with(binding) {
+            rvMovies.adapter = homeAdapter
+        }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding.root
+        collectLoadState()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override suspend fun collectStateInScope() {
+        viewModel.state.collectLatest { pagingData ->
+            homeAdapter.submitData(pagingData.movies)
+        }
+    }
 
-        binding.rvMovies.adapter = homeAdapter
-
-        collectEffect()
-        collectState()
-        collectLoadState()
+    override suspend fun collectEffectInScope() {
+        viewModel.effect.collect { effect ->
+            when (effect) {
+                is HomeEffect.GoToDetail -> {
+                    val bundle = Bundle().apply {
+                        putInt("id", effect.id)
+                    }
+                    findNavController().navigate(R.id.action_homeFragment_to_detailFragment, bundle)
+                }
+            }
+        }
     }
 
     private fun collectLoadState() {
@@ -78,38 +84,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
-    private fun collectState() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.state.collectLatest { pagingData ->
-                homeAdapter.submitData(pagingData.movies)
-            }
-        }
-    }
-
-    private fun collectEffect() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.effect.collect { effect ->
-                    when (effect) {
-                        is HomeEffect.GoToDetail -> {
-                            val bundle = Bundle().apply {
-                                putInt("id", effect.id)
-                            }
-                            findNavController().navigate(R.id.action_homeFragment_to_detailFragment, bundle)
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     private fun onMovieClick(id: Int) {
         viewModel.setEvent(HomeEvent.MovieClicked(id))
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding.rvMovies.adapter = null
-        _binding = null
     }
 }
