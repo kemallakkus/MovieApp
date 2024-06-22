@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/onboardingFragment"
-        android:name="com.example.movieapp.presentation.onboarding.OnboardingFragment"
+        android:name="com.example.movieapp.ui.onboarding.OnboardingFragment"
         android:label="fragment_onboarding"
         tools:layout="@layout/fragment_onboarding" >
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.movieapp.presentation.home.HomeFragment"
+        android:name="com.example.movieapp.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.movieapp.presentation.detail.DetailFragment"
+        android:name="com.example.movieapp.ui.detail.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" >
     </fragment>

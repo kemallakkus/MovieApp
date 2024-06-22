@@ -1,12 +1,9 @@
-package com.example.movieapp.presentation.home
+package com.example.movieapp.ui.home
 
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.movieapp.common.base.BaseViewModel
-import com.example.movieapp.common.base.Effect
-import com.example.movieapp.common.base.Event
-import com.example.movieapp.common.base.State
 import com.example.movieapp.domain.model.Movie
 import com.example.movieapp.domain.usecases.MoviesUsesCases
 import com.example.movieapp.common.util.Constants.EMPTY_STRING
@@ -45,11 +42,11 @@ class HomeViewModel @Inject constructor(
     }
 }
 
-sealed interface HomeEvent : Event {
+sealed interface HomeEvent {
     data class MovieClicked(val id: Int) : HomeEvent
 }
 
-sealed interface HomeEffect : Effect {
+sealed interface HomeEffect {
     data class GoToDetail(val id: Int) : HomeEffect
 }
 
@@ -57,4 +54,4 @@ data class HomeState(
     val movies: PagingData<Movie> = PagingData.empty(),
     val isLoading: Boolean = false,
     val error: String = EMPTY_STRING,
-) : State
+)

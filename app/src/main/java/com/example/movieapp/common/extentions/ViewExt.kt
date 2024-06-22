@@ -26,14 +26,9 @@ fun View.visible() {
     visibility = View.VISIBLE
 }
 
+/**
+ * asdasd
+ */
 fun View.gone() {
     visibility = View.GONE
-}
-
-fun setViewsVisible(vararg views: View) = views.forEach {
-    it.visible()
-}
-
-fun setViewsGone(vararg views: View) = views.forEach {
-    it.gone()
 }

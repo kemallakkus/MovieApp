@@ -1,11 +1,8 @@
-package com.example.movieapp.presentation.detail
+package com.example.movieapp.ui.detail
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.example.movieapp.common.base.BaseViewModel
-import com.example.movieapp.common.base.Effect
-import com.example.movieapp.common.base.Event
-import com.example.movieapp.common.base.State
 import com.example.movieapp.domain.model.Detail
 import com.example.movieapp.domain.usecases.MoviesUsesCases
 import com.example.movieapp.common.util.Constants.EMPTY_STRING
@@ -49,12 +46,12 @@ data class DetailState(
     val detail: Detail = Detail(),
     val isLoading: Boolean = false,
     val error: String = EMPTY_STRING,
-) : State
+)
 
-sealed interface DetailEvent : Event {
+sealed interface DetailEvent {
     data object BackClicked : DetailEvent
 }
 
-sealed interface DetailEffect : Effect {
+sealed interface DetailEffect {
     data object GoToBack : DetailEffect
 }

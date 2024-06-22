@@ -46,6 +46,7 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
             buildConfigField("String", "API_KEY", "\"$apiKey\"")
+            signingConfig = signingConfigs.getByName("debug")
         }
 
         debug {

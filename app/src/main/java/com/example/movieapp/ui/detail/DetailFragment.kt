@@ -1,4 +1,4 @@
-package com.example.movieapp.presentation.detail
+package com.example.movieapp.ui.detail
 
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController

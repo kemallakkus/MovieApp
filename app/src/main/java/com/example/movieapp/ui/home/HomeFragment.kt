@@ -1,4 +1,4 @@
-package com.example.movieapp.presentation.home
+package com.example.movieapp.ui.home
 
 import android.os.Bundle
 import android.widget.Toast

@@ -1,10 +1,9 @@
 package com.example.movieapp.common.util
 
-import com.example.movieapp.common.util.Constants.ZERO_DOUBLE
-import com.example.movieapp.common.util.Constants.ZERO_FLOAT
-import com.example.movieapp.common.util.Constants.ZERO_INT
-
 object Constants {
+
+    @Volatile
+    var TOKEN = ""
 
     const val EMPTY_STRING = ""
 
