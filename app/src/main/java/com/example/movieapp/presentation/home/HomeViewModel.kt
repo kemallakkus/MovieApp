@@ -1,6 +1,5 @@
 package com.example.movieapp.presentation.home
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
@@ -12,14 +11,7 @@ import com.example.movieapp.domain.model.Movie
 import com.example.movieapp.domain.usecases.MoviesUsesCases
 import com.example.movieapp.common.util.Constants.EMPTY_STRING
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -31,7 +23,7 @@ class HomeViewModel @Inject constructor(
     override fun setInitialState() = HomeState(isLoading = false)
 
     override fun handleEvents(event: HomeEvent) {
-        when(event) {
+        when (event) {
             is HomeEvent.MovieClicked -> {
                 setEffect {
                     HomeEffect.GoToDetail(event.id)
@@ -53,11 +45,11 @@ class HomeViewModel @Inject constructor(
     }
 }
 
-sealed interface HomeEvent: Event {
+sealed interface HomeEvent : Event {
     data class MovieClicked(val id: Int) : HomeEvent
 }
 
-sealed interface HomeEffect: Effect {
+sealed interface HomeEffect : Effect {
     data class GoToDetail(val id: Int) : HomeEffect
 }
 
@@ -65,4 +57,4 @@ data class HomeState(
     val movies: PagingData<Movie> = PagingData.empty(),
     val isLoading: Boolean = false,
     val error: String = EMPTY_STRING,
-): State
+) : State

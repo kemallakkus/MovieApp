@@ -1,6 +1,5 @@
 package com.example.movieapp.data.repository
 
-import android.util.Log
 import androidx.paging.PagingData
 import com.example.movieapp.data.mapper.toDomain
 import com.example.movieapp.common.base.BaseRepository

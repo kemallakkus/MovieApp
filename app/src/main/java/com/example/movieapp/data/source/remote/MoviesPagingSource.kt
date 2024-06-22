@@ -5,7 +5,6 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.movieapp.data.dto.ResultDto
 import com.example.movieapp.common.util.Resource
 import com.example.movieapp.common.util.toPagingException
 import kotlinx.coroutines.flow.Flow

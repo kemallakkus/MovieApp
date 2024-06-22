@@ -69,4 +69,5 @@ class HomeAdapter(
         }
     }
 }
+
 private const val ITEM_CHANGE = "itemChange"
