@@ -6,6 +6,8 @@ import com.example.movieapp.common.base.BaseViewModel
 import com.example.movieapp.domain.model.Detail
 import com.example.movieapp.domain.usecases.MoviesUsesCases
 import com.example.movieapp.common.util.Constants.EMPTY_STRING
+import com.example.movieapp.common.util.Resource
+import com.example.movieapp.data.mapper.toDomain
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -36,8 +38,19 @@ class DetailViewModel @Inject constructor(
 
     private fun getDetail(id: Int) {
         viewModelScope.launch {
-            val detail = moviesUsesCases.getDetail(id)
-            setState { copy(detail = detail) }
+            moviesUsesCases.getDetail(id).collect { resource ->
+                when (resource) {
+                    is Resource.Success -> {
+                        setState { copy(detail = resource.data) }
+                    }
+
+                    is Resource.Error -> {
+                        setEffect { DetailEffect.ShowError(resource.error) }
+                    }
+                }
+//            val detail = moviesUsesCases.getDetail(id)
+//            setState { copy(detail = detail) }
+            }
         }
     }
 }
@@ -54,4 +67,5 @@ sealed interface DetailEvent {
 
 sealed interface DetailEffect {
     data object GoToBack : DetailEffect
+    data class ShowError(val message: String) : DetailEffect
 }

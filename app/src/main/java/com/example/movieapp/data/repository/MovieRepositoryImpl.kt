@@ -3,6 +3,7 @@ package com.example.movieapp.data.repository
 import androidx.paging.PagingData
 import com.example.movieapp.data.mapper.toDomain
 import com.example.movieapp.common.base.BaseRepository
+import com.example.movieapp.common.util.Resource
 import com.example.movieapp.data.source.remote.MovieService
 import com.example.movieapp.data.source.remote.safeApiCallPaging
 import com.example.movieapp.domain.model.Detail
@@ -26,7 +27,11 @@ class MovieRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getDetail(id: Int): Detail {
-        return movieService.getDetail(id).toDomain()
+    override suspend fun getDetail(id: Int): Resource<Detail> {
+        return safeApiCall {
+            movieService.getDetail(id)
+        }.map { result ->
+            result.toDomain()
+        }
     }
 }

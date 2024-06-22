@@ -1,6 +1,7 @@
 package com.example.movieapp.domain.repository
 
 import androidx.paging.PagingData
+import com.example.movieapp.common.util.Resource
 import com.example.movieapp.domain.model.Detail
 import com.example.movieapp.domain.model.Movie
 import kotlinx.coroutines.flow.Flow
@@ -8,5 +9,5 @@ import kotlinx.coroutines.flow.Flow
 interface MovieRepository {
     fun getMovies(): Flow<PagingData<Movie>>
 
-    suspend fun getDetail(id: Int): Detail
+    suspend fun getDetail(id: Int): Resource<Detail>
 }

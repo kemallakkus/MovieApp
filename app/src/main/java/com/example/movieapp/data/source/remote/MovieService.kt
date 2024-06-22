@@ -22,5 +22,5 @@ interface MovieService {
     suspend fun getDetail(
         @Path("series_id") seriesId: Int,
         @Query("language") language: String = "en-US",
-    ): DetailDto
+    ): Response<DetailDto>
 }

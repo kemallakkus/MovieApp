@@ -1,5 +1,6 @@
 package com.example.movieapp.ui.detail
 
+import android.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.movieapp.common.base.BaseFragment
@@ -26,6 +27,16 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
             when (effect) {
                 is DetailEffect.GoToBack -> {
                     findNavController().navigateUp()
+                }
+
+                is DetailEffect.ShowError -> {
+                    AlertDialog.Builder(requireContext())
+                        .setTitle("Error")
+                        .setMessage(effect.message)
+                        .setPositiveButton("OK") { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        .show()
                 }
             }
         }

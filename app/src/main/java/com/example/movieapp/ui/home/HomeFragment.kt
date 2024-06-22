@@ -1,15 +1,13 @@
 package com.example.movieapp.ui.home
 
+import android.app.AlertDialog
 import android.os.Bundle
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.paging.LoadState
 import com.example.movieapp.R
 import com.example.movieapp.common.base.BaseFragment
-import com.example.movieapp.common.extentions.gone
-import com.example.movieapp.common.extentions.visible
+import com.example.movieapp.common.extentions.handleLoadStates
 import com.example.movieapp.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -54,23 +52,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         viewLifecycleOwner.lifecycleScope.launch {
             homeAdapter.loadStateFlow.collect { loadState ->
                 with(binding) {
-                    when (loadState.refresh) {
-                        is LoadState.Loading -> {
-                            rvMovies.gone()
-                            progressBar.visible()
-                        }
-
-                        is LoadState.NotLoading -> {
-                            rvMovies.visible()
-                            progressBar.gone()
-                        }
-
-                        is LoadState.Error -> {
-                            progressBar.gone()
-                            val errorState = loadState.refresh as LoadState.Error
-                            Toast.makeText(requireContext(), "Error: ${errorState.error.message}", Toast.LENGTH_SHORT)
-                                .show()
-                        }
+                    loadState.handleLoadStates(progressBar, rvMovies) { errorMessage ->
+                        AlertDialog.Builder(requireContext())
+                            .setTitle("Error")
+                            .setMessage(errorMessage.toString())
+                            .setPositiveButton("OK") { dialog, _ ->
+                                dialog.dismiss()
+                            }
+                            .show()
                     }
                 }
             }
