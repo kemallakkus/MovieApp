@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Margins -->
+    <dimen name="margin_very_small">6dp</dimen>
+    <dimen name="margin_smaller">12dp</dimen>
+    <dimen name="margin_small">16dp</dimen>
+    <dimen name="margin_medium">24dp</dimen>
+    <dimen name="margin_large">30dp</dimen>
+    <dimen name="margin_top_negative">-12dp</dimen>
+    <dimen name="card_height">450dp</dimen>
+    <dimen name="card_height_detail">300dp</dimen>
+
+    <!-- Text sizes -->
+    <dimen name="text_size_large">24sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+
+    <!-- Paddings -->
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">12dp</dimen>
+
+    <!-- Lottie Animation View -->
+    <dimen name="lottie_width_height">40dp</dimen>
+
+    <!-- ScoreCircleView -->
+    <dimen name="score_circle_size">50dp</dimen>
+
+    <!-- radius -->
+    <dimen name="radius">500dp</dimen>
+    <dimen name="radius_mini">50dp</dimen>
+</resources>

@@ -4,15 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:backgroundTint="@color/white"
-    android:layout_margin="6dp"
+    android:layout_margin="@dimen/margin_very_small"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/bg_item">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_image"
         android:layout_width="0dp"
-        android:layout_height="300dp"
-        app:cardCornerRadius="16dp"
+        android:layout_height="@dimen/card_height_detail"
+        app:cardCornerRadius="@dimen/margin_small"
         app:cardBackgroundColor="@android:color/transparent"
         app:cardElevation="0dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,8 +34,8 @@
 
     <com.example.movieapp.common.component.ScoreCircleView
         android:id="@+id/scoreCircleView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/score_circle_size"
+        android:layout_height="@dimen/score_circle_size"
         android:background="@drawable/bg_rate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,10 +51,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_image"
         app:layout_constraintBottom_toTopOf="@id/tv_movie_name"
-        android:layout_marginTop="-12dp"
+        android:layout_marginTop="@dimen/margin_top_negative"
         tools:text="7.5 %"
         android:textColor="@color/white"
-        android:textSize="11sp"
+        android:textSize="@dimen/text_size_small"
         android:fontFamily="@font/worksans_bold"/>
 
     <TextView
@@ -63,10 +63,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_movie_rate"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginStart="@dimen/margin_small"
         tools:text="Movie"
-        android:textSize="15sp"
+        android:textSize="@dimen/text_size_medium"
         android:fontFamily="@font/worksans_bold"/>
 
     <TextView
@@ -76,10 +76,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_movie_name"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginVertical="6dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginVertical="@dimen/margin_very_small"
+        android:layout_marginStart="@dimen/margin_medium"
         tools:text="15.10.2020"
-        android:textSize="15sp"
+        android:textSize="@dimen/text_size_medium"
         android:fontFamily="@font/worksans_regular"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

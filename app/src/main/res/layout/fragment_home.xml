@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
+    android:padding="@dimen/padding_small"
     android:background="@color/background_color"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -22,8 +22,8 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/progress_bar"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/lottie_width_height"
+        android:layout_height="@dimen/lottie_width_height"
         android:scaleX="2.5"
         android:scaleY="2.5"
         android:visibility="gone"

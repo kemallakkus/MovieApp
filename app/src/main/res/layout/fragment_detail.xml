@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_color"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.detail.DetailFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_image"
         android:layout_width="0dp"
-        android:layout_height="450dp"
+        android:layout_height="@dimen/card_height"
         app:cardBackgroundColor="@android:color/transparent"
         app:cardElevation="0dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,8 +39,8 @@
         android:background="@drawable/bg_back_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"/>
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_medium"/>
 
 
     <TextView
@@ -49,12 +50,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_image"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:layout_marginStart="@dimen/margin_medium"
         tools:text="@string/movie_name"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="@dimen/text_size_large"
         android:fontFamily="@font/worksans_bold"/>
 
     <TextView
@@ -64,11 +65,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_movie_name"
-        android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginHorizontal="@dimen/margin_medium"
         tools:text="@string/movie_overview"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="@dimen/text_size_medium"
         android:fontFamily="@font/worksans_regular"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
