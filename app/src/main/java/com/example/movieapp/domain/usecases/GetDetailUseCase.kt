@@ -1,6 +1,6 @@
 package com.example.movieapp.domain.usecases
 
-import com.example.movieapp.common.util.onSuccess
+import com.example.movieapp.common.util.transform
 import com.example.movieapp.domain.repository.MovieRepository
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -11,7 +11,7 @@ class GetDetailUseCase @Inject constructor(
 
     operator fun invoke(id: Int) = flow {
         emit(
-            moviesRepository.getDetail(id).onSuccess {
+            moviesRepository.getDetail(id).transform {
                 it
             }
         )

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.movieapp.R
 import com.example.movieapp.common.extentions.loadImage
 import com.example.movieapp.databinding.ItemMoviesBinding
 import com.example.movieapp.domain.model.Movie
@@ -37,7 +38,7 @@ class HomeAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Movie) {
             with(binding) {
-                ivMovie.loadImage(item.posterPath)
+                ivMovie.loadImage(item.posterPath, errorImage = R.drawable.god_father)
                 tvMovieName.text = item.name
                 tvMovieDate.text = item.firstAirDate
                 tvMovieRate.text = item.voteAverageFormat

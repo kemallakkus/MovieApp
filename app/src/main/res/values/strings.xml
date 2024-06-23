@@ -2,15 +2,8 @@
     <string name="app_name">MovieApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="skip">Skip</string>
-    <string name="back">Back</string>
-    <string name="next">Next</string>
-    <string name="finish">Finish</string>
-    <string name="onboarding_title_1">Welcome to Movie App</string>
-    <string name="onboarding_title_2">This App is For You</string>
-    <string name="onboarding_desc_1">You can discover the latest movie content in this application.</string>
-    <string name="onboarding_desc_2">You can discover the latest movie content in this application.</string>
     <string name="movieImage">movie image</string>
     <string name="movie_overview">Raymond Red Reddington, one of the FBI\'s most wanted fugitives, surrenders in person at FBI Headquarters in Washington, D.C. He claims that he and the FBI have the same interests: bringing down dangerous criminals and terrorists. In the last two decades, he\'s made a list of criminals and terrorists that matter the most but the FBI cannot find because it does not know they exist. Reddington calls this The Blacklist. Reddington will co-operate, but insists that he will speak only to Elizabeth Keen, a rookie FBI profiler</string>
     <string name="movie_name">GodFather II</string>
+    <string name="movie_date">15.10.2020</string>
 </resources>

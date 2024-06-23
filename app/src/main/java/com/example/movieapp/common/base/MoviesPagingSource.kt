@@ -1,4 +1,4 @@
-package com.example.movieapp.data.source.remote
+package com.example.movieapp.common.base
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -55,7 +55,7 @@ fun <T : Any> safeApiCallPaging(
     ).flow
 }
 
-internal fun <Value : Any> setPager(
+fun <Value : Any> setPager(
     pageSize: Int = MoviesPagingSource.LIMIT,
     initialLoadSize: Int = MoviesPagingSource.LIMIT,
     enablePlaceholders: Boolean = false,
