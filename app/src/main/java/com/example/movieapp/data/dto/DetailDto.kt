@@ -8,7 +8,7 @@ data class DetailDto(
     @SerializedName("backdrop_path")
     val backdropPath: String? = null,
     @SerializedName("created_by")
-    val createdBy: List<CreatedBy>? = null,
+    val createdBy: List<CreatedByDto>? = null,
     @SerializedName("episode_run_time")
     val episodeRunTime: List<Int>? = null,
     @SerializedName("first_air_date")

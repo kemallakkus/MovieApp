@@ -1,6 +1,5 @@
 package com.example.movieapp.common.extentions
 
-import android.util.Log
 import android.view.View
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
@@ -19,15 +18,10 @@ import androidx.recyclerview.widget.RecyclerView
 fun CombinedLoadStates.handleLoadStates(
     progressBar: View,
     recyclerView: RecyclerView,
-    onError: (LoadState.Error) -> Unit = { error ->
-        // Varsayılan hata işleyici
-        Log.e("LoadStateError", "Error: ${error.error.message}")
-    },
+    onError: (LoadState.Error) -> Unit
 ) {
-    // Yenileme durumlarını kontrol et
     setLoadState(refresh, progressBar, recyclerView, onError)
 
-    // Ekleme durumlarını kontrol et
     setLoadState(append, progressBar, recyclerView, onError)
 }
 
@@ -41,21 +35,21 @@ private fun setLoadState(
         is LoadState.Loading -> showLoading(progressBar, recyclerView)
         is LoadState.NotLoading -> showContent(progressBar, recyclerView)
         is LoadState.Error -> showError(loadState, onError)
-        else -> Unit // Diğer durumlar için
+        else -> Unit
     }
 }
 
 private fun showLoading(progressBar: View, recyclerView: RecyclerView) {
-    progressBar.visible() // İlerleme çubuğunu göster
-    recyclerView.gone() // RecyclerView'ı gizle
+    progressBar.visible()
+    recyclerView.gone()
 }
 
 private fun showContent(progressBar: View, recyclerView: RecyclerView) {
-    progressBar.gone() // İlerleme çubuğunu gizle
-    recyclerView.visible() // RecyclerView'ı göster
+    progressBar.gone()
+    recyclerView.visible()
 }
 
 private fun showError(errorState: LoadState.Error, onError: (LoadState.Error) -> Unit) {
-    onError.invoke(errorState) // Hata mesajını onError fonksiyonuna ilet
+    onError.invoke(errorState)
 }
 

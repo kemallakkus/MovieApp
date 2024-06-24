@@ -2,7 +2,7 @@ package com.example.movieapp.data.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class CreatedBy(
+data class CreatedByDto(
     @SerializedName("credit_id")
     val creditId: String? = null,
     val gender: Int? = null,

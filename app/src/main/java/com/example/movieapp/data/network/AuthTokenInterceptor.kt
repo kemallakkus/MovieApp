@@ -6,8 +6,6 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import javax.inject.Inject
 
-//TODO: Bu bi interceptor oluşturduk. istek atılmadan önce retrtofitin ne yapmsaı gerektiğini söyledik.
-
 class AuthTokenInterceptor @Inject constructor() : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         TOKEN = BuildConfig.API_KEY

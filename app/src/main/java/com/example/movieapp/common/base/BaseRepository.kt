@@ -33,7 +33,7 @@ abstract class BaseRepository {
         val errorBody = response.errorBody()?.string()
         val errorMessage = when (response.code()) {
             400 -> "Bad Request: $errorBody"
-            401 -> "Unauthorized: $errorBody"
+            401 -> "Unauthorized: saddasdasdasdasd"
             403 -> "Forbidden: $errorBody"
             404 -> "Not Found: $errorBody"
             500 -> "Internal Server Error: $errorBody"

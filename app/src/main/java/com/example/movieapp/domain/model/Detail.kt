@@ -19,5 +19,6 @@ data class Detail(
     val posterPath: String = EMPTY_STRING,
     val status: String = EMPTY_STRING,
     val voteAverage: Float = ZERO_FLOAT,
-    val voteAverageFormat: String = EMPTY_STRING
+    val voteAverageFormat: String = EMPTY_STRING,
+    val createdBy: List<CreatedBy> = emptyList()
 )

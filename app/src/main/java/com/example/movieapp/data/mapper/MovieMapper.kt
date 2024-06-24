@@ -1,6 +1,5 @@
 package com.example.movieapp.data.mapper
 
-import android.util.Log
 import com.example.movieapp.data.dto.ResultDto
 import com.example.movieapp.domain.model.Movie
 import com.example.movieapp.common.util.APIConst.IMAGE_URL
@@ -8,7 +7,6 @@ import com.example.movieapp.common.util.orZero
 import java.util.Locale
 
 fun List<ResultDto>?.toDomain() = this?.map { dto ->
-    Log.d("Mapper", "Mapping ResultDto: $dto")
     Movie(
         id = dto.id.orZero(),
         name = dto.name.orEmpty(),
