@@ -16,8 +16,4 @@ class GetDetailUseCase @Inject constructor(
             }
         )
     }
-
-//    suspend operator fun invoke(id: Int): Detail {
-//        return moviesRepository.getDetail(id)
-//    }
 }

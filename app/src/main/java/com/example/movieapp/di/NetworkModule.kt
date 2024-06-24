@@ -4,7 +4,7 @@ import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.movieapp.BuildConfig.BASE_URL
 import com.example.movieapp.data.network.AuthTokenInterceptor
-import com.example.movieapp.data.source.remote.MovieService
+import com.example.movieapp.data.source.MovieService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -43,7 +43,9 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideMovieApi(okHttpClient: OkHttpClient): MovieService = Retrofit.Builder()
+    fun provideMovieApi(
+        okHttpClient: OkHttpClient
+    ): MovieService = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .client(okHttpClient)

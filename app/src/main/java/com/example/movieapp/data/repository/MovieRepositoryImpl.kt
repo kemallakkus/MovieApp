@@ -4,7 +4,7 @@ import androidx.paging.PagingData
 import com.example.movieapp.data.mapper.toDomain
 import com.example.movieapp.common.base.BaseRepository
 import com.example.movieapp.common.util.Resource
-import com.example.movieapp.data.source.remote.MovieService
+import com.example.movieapp.data.source.MovieService
 import com.example.movieapp.common.base.safeApiCallPaging
 import com.example.movieapp.domain.model.Detail
 import com.example.movieapp.domain.model.Movie
