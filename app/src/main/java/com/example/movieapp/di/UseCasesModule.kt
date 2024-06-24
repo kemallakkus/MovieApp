@@ -13,7 +13,6 @@ import dagger.hilt.android.scopes.ViewModelScoped
 @Module
 @InstallIn(ViewModelComponent::class)
 object UseCasesModule {
-
     @Provides
     @ViewModelScoped
     fun provideMoviesUseCases(
