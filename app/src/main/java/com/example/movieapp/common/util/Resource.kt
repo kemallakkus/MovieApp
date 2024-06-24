@@ -13,6 +13,9 @@ fun Resource.Error.toPagingException(): PagingException {
     return PagingException(error)
 }
 
+/**
+ * API'den gelen sonuçları domain modeline dönüştürür.
+ */
 suspend fun <T : Any, N : Any> Resource<T>.transform(data: suspend (T) -> N): Resource<N> {
     return when (this) {
         is Resource.Success -> {

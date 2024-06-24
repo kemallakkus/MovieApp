@@ -5,8 +5,8 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.movieapp.common.base.BaseViewModel
 import com.example.movieapp.domain.model.Movie
-import com.example.movieapp.domain.usecases.MoviesUsesCases
 import com.example.movieapp.common.util.Constants.EMPTY_STRING
+import com.example.movieapp.domain.usecases.GetMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val moviesUsesCases: MoviesUsesCases,
+    private val getMoviesUseCase: GetMoviesUseCase,
 ) : BaseViewModel<HomeEvent, HomeState, HomeEffect>() {
 
     override fun setInitialState() = HomeState(isLoading = false)
@@ -34,7 +34,7 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun getMovies() = viewModelScope.launch {
-        moviesUsesCases.getMovies.invoke().cachedIn(viewModelScope).collectLatest {
+        getMoviesUseCase.invoke().cachedIn(viewModelScope).collectLatest {
             setState {
                 copy(movies = it)
             }

@@ -4,18 +4,17 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.example.movieapp.common.base.BaseViewModel
 import com.example.movieapp.domain.model.Detail
-import com.example.movieapp.domain.usecases.MoviesUsesCases
 import com.example.movieapp.common.util.Constants.EMPTY_STRING
 import com.example.movieapp.common.util.Resource
-import com.example.movieapp.data.mapper.toDomain
 import com.example.movieapp.domain.model.CreatedBy
+import com.example.movieapp.domain.usecases.GetDetailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
-    private val moviesUsesCases: MoviesUsesCases,
+    private val getDetailUseCase: GetDetailUseCase,
     saveStateHandle: SavedStateHandle,
 ) : BaseViewModel<DetailEvent, DetailState, DetailEffect>() {
 
@@ -39,7 +38,7 @@ class DetailViewModel @Inject constructor(
 
     private fun getDetail(id: Int) {
         viewModelScope.launch {
-            moviesUsesCases.getDetail(id).collect { resource ->
+            getDetailUseCase(id).collect { resource ->
                 when (resource) {
                     is Resource.Success -> {
                         val createdBy = resource.data.createdBy.firstOrNull() ?: CreatedBy()

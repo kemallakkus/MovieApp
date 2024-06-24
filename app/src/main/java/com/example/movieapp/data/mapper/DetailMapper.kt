@@ -9,6 +9,9 @@ import com.example.movieapp.data.dto.CreatedByDto
 import com.example.movieapp.domain.model.CreatedBy
 import java.util.Locale
 
+/**
+ DTO'ları domain modeline dönüştürür.
+ */
 fun DetailDto.toDomain() = Detail(
     backdropPath = ORIGINAL_IMAGE_URL + backdropPath.orEmpty(),
     id = id.orZero(),
