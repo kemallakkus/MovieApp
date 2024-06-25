@@ -71,47 +71,6 @@
                 tools:text="@string/movie_name" />
 
             <TextView
-                android:id="@+id/tv_movie_created_info"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_medium"
-                android:layout_marginTop="@dimen/margin_small"
-                android:layout_marginEnd="@dimen/margin_small"
-                android:fontFamily="@font/worksans_bold"
-                android:text="@string/created_by"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_medium"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_movie_name" />
-
-            <ImageView
-                android:id="@+id/iv_created"
-                android:layout_width="@dimen/margin_large"
-                android:layout_height="@dimen/margin_large"
-                android:contentDescription="@string/created_by"
-                android:src="@drawable/ic_back"
-                android:layout_marginStart="@dimen/margin_medium"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_movie_created"
-                app:layout_constraintBottom_toBottomOf="@id/tv_movie_created"/>
-
-            <TextView
-                android:id="@+id/tv_movie_created"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_smaller"
-                android:layout_marginTop="@dimen/margin_small"
-                android:fontFamily="@font/worksans_regular"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_medium"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/iv_created"
-                app:layout_constraintTop_toBottomOf="@id/tv_movie_created_info"
-                tools:text="name"/>
-
-
-            <TextView
                 android:id="@+id/tv_overview"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -124,7 +83,7 @@
                 android:textSize="@dimen/text_size_medium"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_movie_created" />
+                app:layout_constraintTop_toBottomOf="@id/tv_movie_name" />
 
             <TextView
                 android:id="@+id/tv_movie_overview"

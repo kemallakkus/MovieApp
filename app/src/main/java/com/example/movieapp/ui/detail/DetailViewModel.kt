@@ -6,7 +6,6 @@ import com.example.movieapp.common.base.BaseViewModel
 import com.example.movieapp.domain.model.Detail
 import com.example.movieapp.common.util.Constants.EMPTY_STRING
 import com.example.movieapp.common.util.Resource
-import com.example.movieapp.domain.model.CreatedBy
 import com.example.movieapp.domain.usecases.GetDetailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -41,8 +40,7 @@ class DetailViewModel @Inject constructor(
             getDetailUseCase(id).collect { resource ->
                 when (resource) {
                     is Resource.Success -> {
-                        val createdBy = resource.data.createdBy.firstOrNull() ?: CreatedBy()
-                        setState { copy(detail = resource.data, createdBy = createdBy) }
+                        setState { copy(detail = resource.data) }
                     }
 
                     is Resource.Error -> {
@@ -56,7 +54,6 @@ class DetailViewModel @Inject constructor(
 
 data class DetailState(
     val detail: Detail = Detail(),
-    val createdBy: CreatedBy = CreatedBy(),
     val isLoading: Boolean = false,
     val error: String = EMPTY_STRING,
 )

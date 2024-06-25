@@ -49,8 +49,6 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
                 ivMovie.loadImage(state.detail.posterPath)
                 tvMovieName.text = state.detail.name
                 tvMovieOverview.text = state.detail.overview
-                ivCreated.loadImage(state.createdBy.profilePath, isCircleCrop = true, errorImage = R.drawable.god_father)
-                tvMovieCreated.text = state.createdBy.name
             }
         }
     }

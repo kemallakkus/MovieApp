@@ -34,7 +34,7 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun getMovies() = viewModelScope.launch {
-        getMoviesUseCase.invoke().cachedIn(viewModelScope).collectLatest {
+        getMoviesUseCase().cachedIn(viewModelScope).collectLatest {
             setState {
                 copy(movies = it)
             }
