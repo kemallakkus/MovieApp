@@ -9,6 +9,23 @@ import com.example.movieapp.common.util.Resource
 import com.example.movieapp.common.util.toPagingException
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * MoviesPagingSource ve ilgili fonksiyonlar, Jetpack Paging kütüphanesi kullanarak
+ * API'den sayfalama işlemlerini yönetir.
+ *
+ * MoviesPagingSource:
+ * - loadDataFromApi: API'den veri yüklemek için kullanılan lambda fonksiyonu.
+ * - load: Mevcut sayfa ve boyut bilgisiyle API çağrısı yapar, LoadResult döner.
+ * - getRefreshKey: Sayfalama yenileme anahtarını belirler.
+ * - STARTING_PAGE_INDEX: Başlangıç sayfa indeksini tanımlar.
+ * - LIMIT: Sayfa başına öğe sayısını tanımlar.
+ *
+ * safeApiCallPaging:
+ * - API çağrılarını güvenli bir şekilde yaparak PagingData akışı döner.
+ *
+ * setPager:
+ * - Paging yapılandırmasını sağlar ve PagingSource kullanarak Pager döner.
+ */
 class MoviesPagingSource<Value : Any>(
     val loadDataFromApi: suspend (page: Int, pageSize: Int) -> List<Value>?,
 ) : PagingSource<Int, Value>() {

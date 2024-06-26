@@ -8,6 +8,30 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
+
+/**
+ * BaseViewModel sınıfı, MVVM (Model-View-ViewModel) mimarisine uygun olarak
+ * olaylar (events), durumlar (states) ve etkiler (effects) arasında iletişimi
+ * yönetmek için tasarlanmış bir temel ViewModel sınıfıdır. Bu sınıf, olayları
+ * yönetir ve UI durumunu günceller.
+ *
+ * @param Event : UI bileşenlerinden gelen olayları temsil eder.
+ * @param State : Uygulamanın mevcut durumunu temsil eder.
+ * @param Effect : UI üzerinde meydana gelen yan etkileri temsil eder.
+ *
+ * Yöntemler:
+ * - setInitialState: Alt sınıflar tarafından başlangıç durumunu belirlemek için
+ *   uygulanması gereken soyut bir yöntemdir.
+ * - setEvent: Yeni bir olay belirler ve onu _event akışına yayar.
+ * - setState: Mevcut durumu bir indirgeme (reducer) fonksiyonu kullanarak günceller.
+ * - setEffect: Yeni bir etki belirler ve onu _effect akışına yayar.
+ * - subscribeToEvents: Olayları toplar ve handleEvents yöntemi ile işler.
+ * - handleEvents: Alt sınıflar tarafından uygulanması gereken ve olayları işlemek
+ *   için kullanılan soyut bir yöntemdir.
+ *
+ * Bu sınıf, ViewModel'in yaşam döngüsüne duyarlı olarak çalışır ve coroutine'ler
+ * kullanarak asenkron veri akışlarını yönetir.
+ */
 abstract class BaseViewModel<Event, State, Effect> : ViewModel() {
 
     private val initialState: State by lazy { setInitialState() }

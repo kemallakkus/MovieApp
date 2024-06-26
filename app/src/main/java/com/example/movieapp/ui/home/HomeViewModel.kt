@@ -52,6 +52,5 @@ sealed interface HomeEffect {
 
 data class HomeState(
     val movies: PagingData<Movie> = PagingData.empty(),
-    val isLoading: Boolean = false,
-    val error: String = EMPTY_STRING,
+    val isLoading: Boolean = false
 )

@@ -11,9 +11,7 @@ class GetDetailUseCase @Inject constructor(
 
     operator fun invoke(id: Int) = flow {
         emit(
-            moviesRepository.getDetail(id).transform {
-                it
-            }
+            moviesRepository.getDetail(id).transform { it }
         )
     }
 }

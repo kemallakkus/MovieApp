@@ -10,7 +10,7 @@ sealed class Resource<out T : Any> {
  * Hata mesajını PagingException içine taşır.
  */
 fun Resource.Error.toPagingException(): PagingException {
-    return PagingException(error)
+    return PagingException(error = error)
 }
 
 /**

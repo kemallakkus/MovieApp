@@ -5,6 +5,21 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 
+/**
+ * BaseRepository sınıfı, API çağrılarını güvenli bir şekilde gerçekleştirmek ve
+ * oluşabilecek hataları yönetmek için kullanılan soyut bir sınıftır. Bu sınıf,
+ * API çağrıları sırasında oluşabilecek yaygın hataları ele alır ve çağrıları
+ * asenkron olarak yönetir.
+ *
+ * Yöntemler:
+ * - safeApiCall: Genel API çağrılarını güvenli bir şekilde gerçekleştirmek için
+ *   kullanılan bir yöntemdir. Başarılı olursa Resource.Success, hata oluşursa
+ *   Resource.Error döner.
+ * - handleErrorResponse: Hata yanıtlarını yönetir ve uygun hata mesajlarını
+ *   oluşturur. HTTP durum kodlarına göre farklı hata mesajları döner.
+ *
+ * @param T : API çağrısından beklenen veri türüdür.
+ */
 abstract class BaseRepository {
 
     suspend fun <T : Any> safeApiCall(apiToBeCalled: suspend () -> Response<T>): Resource<T> {

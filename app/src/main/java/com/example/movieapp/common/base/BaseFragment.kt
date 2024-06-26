@@ -13,6 +13,18 @@ import kotlinx.coroutines.launch
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 
+/**
+ * BaseFragment sınıfı, ViewBinding ve veri toplama işlemlerini
+ * yönetmek için bir temel fragment sınıfıdır. Bu sınıf, ViewBinding'in kullanımını
+ * kolaylaştırır ve veri akışlarını (state ve effect) yaşam döngüsüne duyarlı olarak toplar.
+ *
+ * @param VB : ViewBinding tipini belirtir.
+ * @param inflate : ViewBinding nesnesini oluşturmak için kullanılan bir lambda fonksiyonudur.
+ *
+ * Özellikler:
+ * - _binding: ViewBinding nesnesini saklayan özel bir değişkendir.
+ * - binding: _binding'e güvenli erişim sağlar.
+ */
 abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) : Fragment() {
 
     private var _binding: VB? = null
