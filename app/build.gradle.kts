@@ -30,10 +30,8 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "com.example.movieapp.HiltTestRunner"
     }
-
 
     buildFeatures {
         buildConfig = true
@@ -55,7 +53,6 @@ android {
             buildConfigField("String", "API_KEY", "\"$apiKey\"")
         }
     }
-
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
