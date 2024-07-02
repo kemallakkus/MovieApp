@@ -6,16 +6,6 @@
     app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/onboardingFragment"
-        android:name="com.example.movieapp.ui.onboarding.OnboardingFragment"
-        android:label="fragment_onboarding"
-        tools:layout="@layout/fragment_onboarding" >
-        <action
-            android:id="@+id/onboardingFragmentToHomeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-
-    <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.movieapp.ui.home.HomeFragment"
         android:label="fragment_home"
