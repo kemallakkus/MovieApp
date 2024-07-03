@@ -1,4 +1,4 @@
-package com.example.movieapp.data.dto
+package com.example.movieapp.data.dto.response
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,8 +1,6 @@
-package com.example.movieapp.data.dto
+package com.example.movieapp.data.dto.response
 
 import com.google.gson.annotations.SerializedName
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
 data class ProductionCountry(
     @SerializedName("iso_3166_1")

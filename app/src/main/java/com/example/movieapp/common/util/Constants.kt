@@ -12,6 +12,8 @@ object Constants {
     const val ZERO_INT = 0
 
     const val ZERO_FLOAT = 0f
+
+    const val SESSION_ID_KEY = "SESSION_ID"
 }
 
 fun Int?.orZero() = this ?: 0

@@ -1,6 +1,7 @@
 package com.example.movieapp.di
 
 import android.content.Context
+import android.content.SharedPreferences
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.movieapp.BuildConfig.BASE_URL
 import com.example.movieapp.data.network.AuthTokenInterceptor
@@ -44,7 +45,7 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideMovieApi(
-        okHttpClient: OkHttpClient
+        okHttpClient: OkHttpClient,
     ): MovieService = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
@@ -54,5 +55,12 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideAuthTokenInterceptor(): AuthTokenInterceptor = AuthTokenInterceptor()
+    fun provideAuthTokenInterceptor(sharedPreferences: SharedPreferences): AuthTokenInterceptor =
+        AuthTokenInterceptor(sharedPreferences)
+
+    @Provides
+    @Singleton
+    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
+        return context.getSharedPreferences("movieapp_prefs", Context.MODE_PRIVATE)
+    }
 }

@@ -1,6 +1,6 @@
 package com.example.movieapp.data.mapper
 
-import com.example.movieapp.data.dto.ResultDto
+import com.example.movieapp.data.dto.response.ResultDto
 import com.example.movieapp.domain.model.Movie
 import com.example.movieapp.common.util.APIConst.IMAGE_URL
 import com.example.movieapp.common.util.orZero

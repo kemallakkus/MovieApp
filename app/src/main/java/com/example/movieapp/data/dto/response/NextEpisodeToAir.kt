@@ -1,13 +1,14 @@
-package com.example.movieapp.data.dto
+package com.example.movieapp.data.dto.response
 
 import com.google.gson.annotations.SerializedName
 
-
-data class LastEpisodeToAir(
+data class NextEpisodeToAir(
     @SerializedName("air_date")
     val airDate: String? = null,
     @SerializedName("episode_number")
     val episodeNumber: Int? = null,
+    @SerializedName("episode_type")
+    val episodeType: String? = null,
     val id: Int? = null,
     val name: String? = null,
     val overview: String? = null,

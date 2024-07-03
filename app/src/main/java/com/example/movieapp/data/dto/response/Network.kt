@@ -1,14 +1,12 @@
-package com.example.movieapp.data.dto
+package com.example.movieapp.data.dto.response
 
 import com.google.gson.annotations.SerializedName
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
-data class ProductionCompany(
+data class Network(
     val id: Int? = null,
     @SerializedName("logo_path")
     val logoPath: String? = null,
     val name: String? = null,
     @SerializedName("origin_country")
-    val originCountry: String? = null,
+    val originCountry: String? = null
 )
