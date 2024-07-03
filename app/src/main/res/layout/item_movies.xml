@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:backgroundTint="@color/gray50"
+    android:backgroundTint="@color/gray20"
     android:layout_margin="@dimen/margin_very_small"
+    android:elevation="@dimen/text_size_medium"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/bg_with_stroke">
 

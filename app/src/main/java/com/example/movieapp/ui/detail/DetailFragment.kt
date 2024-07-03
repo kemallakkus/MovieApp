@@ -46,9 +46,13 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
     override suspend fun collectStateInScope() {
         with(binding) {
             viewModel.state.collectLatest { state ->
+                val numStars = rbMovieRate.numStars
+                val rating = (state.detail.voteAverage / 10) * numStars
+
                 ivMovie.loadImage(state.detail.posterPath)
                 tvMovieName.text = state.detail.name
                 tvMovieOverview.text = state.detail.overview
+                rbMovieRate.rating = rating
             }
         }
     }

@@ -109,7 +109,7 @@ class MovieButton @JvmOverloads constructor(
             ButtonType.WHITE -> setType(R.color.white, R.color.gray90)
             ButtonType.BACKGROUND_WHITE -> setType(R.color.white, R.color.black)
             ButtonType.BLACK -> setType(R.color.black, R.color.white)
-            ButtonType.GRAY -> setType(R.color.gray20, R.color.gray80)
+            ButtonType.GRAY -> setType(R.color.gray20, R.color.gray90)
         }
     }
 
