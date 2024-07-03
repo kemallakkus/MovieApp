@@ -24,5 +24,11 @@ fun DetailDto.toDomain() = Detail(
     posterPath = IMAGE_URL + posterPath.orEmpty(),
     status = status.orEmpty(),
     voteAverage = voteAverage?.toFloat().orZero(),
-    voteAverageFormat = String.format(Locale.US, "%.1f", voteAverage.orZero())
+    voteAverageFormat = String.format(Locale.US, "%.1f", voteAverage.orZero()),
+    rating = mapVoteAverageToRating(voteAverage?.toFloat().orZero())
 )
+
+private fun mapVoteAverageToRating(voteAverage: Float): Float {
+    val numStars = 5
+    return (voteAverage / 10) * numStars
+}
