@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/padding_small"
     tools:context=".ui.home.HomeFragment"
-    android:background="@color/background_color"
+    android:background="@color/white"
     xmlns:tools="http://schemas.android.com/tools">
 
     <com.facebook.shimmer.ShimmerFrameLayout

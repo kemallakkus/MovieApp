@@ -8,4 +8,6 @@
     <string name="movie_date">15.10.2020</string>
     <string name="overview">Overview</string>
     <string name="created_by">Created By</string>
+    <string name="movie_app">Movie App</string>
+    <string name="login_or_register">Giriş Yapın veya Hesap Oluşturun</string>
 </resources>

@@ -6,10 +6,18 @@
     <color name="background_color">#DFD8D8</color>
     <color name="red">#FFFF0000</color>
     <color name="green">#FF00FF00</color>
-    <color name="dark_blue">#0606AA</color>
     <color name="blue">#299CF8</color>
     <color name="yellow">#FFFF00FF</color>
     <color name="cyan">#FF00FFFF</color>
     <color name="magenta">#FFFF00FF</color>
     <color name="shimmer">#dddddd</color>
+    <color name="button_color">#F4F4F5</color>
+    <color name="purple">#5E35A8</color>
+    <color name="purple_lightest">#9372CE</color>
+    <color name="gray90">#27272A</color>
+    <color name="gray20">#F4F4F5</color>
+    <color name="gray50">#C4C4C7</color>
+    <color name="gray80">#808080</color>
+    <color name="dark_blue">#312E81</color>
+
 </resources>

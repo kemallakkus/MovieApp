@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MovieButton">
+        <attr name="mb_text" format="string" />
+        <attr name="mb_icon" format="reference" />
+        <attr name="mb_iconColor" format="color" />
+        <attr name="mb_radius" format="dimension" />
+        <attr name="mb_borderColor" format="color" />
+        <attr name="mb_borderWidth" format="dimension" />
+        <attr name="mb_textColor" format="color" />
+        <attr name="mb_width" format="dimension" />
+        <attr name="mb_height" format="dimension" />
+        <attr name="mb_background_color" format="color"/>
+        <attr name="mb_font" format="enum">
+            <enum name="light" value="0" />
+            <enum name="regular" value="1" />
+            <enum name="medium" value="2" />
+            <enum name="semibold" value="3" />
+        </attr>
+        <attr name="mb_button_type" format="enum">
+            <enum name="green" value="0" />
+            <enum name="purple" value="1" />
+            <enum name="white" value="2" />
+            <enum name="background_white" value="3" />
+            <enum name="black" value="4" />
+            <enum name="gray" value="5" />
+            <enum name="purple_light" value="6" />
+        </attr>
+    </declare-styleable>
+</resources>

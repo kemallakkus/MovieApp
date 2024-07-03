@@ -33,4 +33,7 @@
     <dimen name="placeholderImage">60dp</dimen>
     <dimen name="placeholderTextHeight">8dp</dimen>
     <dimen name="padding_10">10dp</dimen>
+
+    <dimen name="some_dimen">16dp</dimen>
+    <dimen name="default_height">40dp</dimen>
 </resources>
