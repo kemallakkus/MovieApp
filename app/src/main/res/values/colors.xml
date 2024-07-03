@@ -11,4 +11,5 @@
     <color name="yellow">#FFFF00FF</color>
     <color name="cyan">#FF00FFFF</color>
     <color name="magenta">#FFFF00FF</color>
+    <color name="shimmer">#dddddd</color>
 </resources>

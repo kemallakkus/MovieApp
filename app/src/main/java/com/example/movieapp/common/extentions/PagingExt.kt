@@ -16,36 +16,36 @@ import androidx.recyclerview.widget.RecyclerView
  * - `showError` fonksiyonu, hata durumunda onError fonksiyonunu çağırarak hata mesajını işler.
  */
 fun CombinedLoadStates.handleLoadStates(
-    progressBar: View,
+    shimmerEffect: View,
     recyclerView: RecyclerView,
     onError: (LoadState.Error) -> Unit
 ) {
-    setLoadState(refresh, progressBar, recyclerView, onError)
+    setLoadState(refresh, shimmerEffect, recyclerView, onError)
 
-    setLoadState(append, progressBar, recyclerView, onError)
+    setLoadState(append, shimmerEffect, recyclerView, onError)
 }
 
 private fun setLoadState(
     loadState: LoadState,
-    progressBar: View,
+    shimmerEffect: View,
     recyclerView: RecyclerView,
     onError: (LoadState.Error) -> Unit,
 ) {
     when (loadState) {
-        is LoadState.Loading -> showLoading(progressBar, recyclerView)
-        is LoadState.NotLoading -> showContent(progressBar, recyclerView)
+        is LoadState.Loading -> showLoading(shimmerEffect, recyclerView)
+        is LoadState.NotLoading -> showContent(shimmerEffect, recyclerView)
         is LoadState.Error -> showError(loadState, onError)
         else -> Unit
     }
 }
 
-private fun showLoading(progressBar: View, recyclerView: RecyclerView) {
-    progressBar.visible()
+private fun showLoading(shimmerEffect: View, recyclerView: RecyclerView) {
+    shimmerEffect.visible()
     recyclerView.gone()
 }
 
-private fun showContent(progressBar: View, recyclerView: RecyclerView) {
-    progressBar.gone()
+private fun showContent(shimmerEffect: View, recyclerView: RecyclerView) {
+    shimmerEffect.gone()
     recyclerView.visible()
 }
 

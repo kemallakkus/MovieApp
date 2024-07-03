@@ -52,7 +52,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         viewLifecycleOwner.lifecycleScope.launch {
             homeAdapter.loadStateFlow.collect { loadState ->
                 with(binding) {
-                    loadState.handleLoadStates(progressBar, rvMovies) { errorMessage ->
+                    loadState.handleLoadStates(shimmerViewContainer, rvMovies) { errorMessage ->
                         AlertDialog.Builder(requireContext())
                             .setTitle("Error")
                             .setMessage(errorMessage.toString())

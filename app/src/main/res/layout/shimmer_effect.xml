@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="@dimen/margin_very_small"
+    android:weightSum="2">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginEnd="@dimen/margin_small">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_image_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/card_height_detail"
+            android:layout_weight="1"
+            app:cardCornerRadius="@dimen/margin_small"
+            app:cardBackgroundColor="@android:color/darker_gray"
+            app:cardElevation="0dp">
+
+            <View
+                android:id="@+id/iv_movie_placeholder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:id="@+id/tv_movie_rate_placeholder"
+            android:layout_width="100dp"
+            android:layout_height="16dp"
+            android:layout_gravity="start"
+            android:layout_marginTop="@dimen/padding_10"
+            android:background="@android:color/darker_gray"/>
+
+        <View
+            android:id="@+id/tv_movie_name_placeholder"
+            android:layout_width="50dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="@dimen/padding_10"
+            android:background="@android:color/darker_gray"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/margin_small">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_image_placeholder_2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/card_height_detail"
+            android:layout_weight="1"
+            app:cardCornerRadius="@dimen/margin_small"
+            app:cardBackgroundColor="@android:color/darker_gray"
+            app:cardElevation="0dp">
+
+            <View
+                android:id="@+id/iv_movie_placeholder_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:id="@+id/tv_movie_rate_placeholder_2"
+            android:layout_width="100dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="@dimen/padding_10"
+            android:background="@android:color/darker_gray"/>
+
+        <View
+            android:id="@+id/tv_movie_name_placeholder_2"
+            android:layout_width="50dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="@dimen/padding_10"
+            android:background="@android:color/darker_gray"/>
+
+    </LinearLayout>
+</LinearLayout>

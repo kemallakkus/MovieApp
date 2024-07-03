@@ -111,5 +111,8 @@ dependencies {
     debugImplementation(libs.library)
     releaseImplementation(libs.library.no.op)
 
+    //Shimmer Effect
+    implementation (libs.shimmer)
+
     implementation(libs.retrofit2.kotlinx.serialization.converter)
 }
