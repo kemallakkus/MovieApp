@@ -53,19 +53,5 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::infl
             }
         }
     }
-
-//    override fun onResume() {
-//        super.onResume()
-//
-//        val uri = requireActivity().intent?.data
-//        uri?.let {
-//            if (it.toString().startsWith("yourapp://auth")) {
-//                val requestToken = it.getQueryParameter("request_token")
-//                if (requestToken != null) {
-//                    viewModel.setEvent(AuthEvent.CreateSession(requestToken))
-//                }
-//            }
-//        }
-//    }
 }
 

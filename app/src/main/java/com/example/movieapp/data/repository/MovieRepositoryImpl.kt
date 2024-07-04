@@ -12,6 +12,7 @@ import com.example.movieapp.domain.model.Movie
 import com.example.movieapp.domain.repository.MovieRepository
 import com.example.movieapp.common.util.transform
 import com.example.movieapp.data.dto.request.SessionRequest
+import com.example.movieapp.domain.model.Genre
 import com.example.movieapp.domain.model.Session
 import com.example.movieapp.domain.model.Token
 import kotlinx.coroutines.flow.Flow
@@ -50,6 +51,14 @@ class MovieRepositoryImpl @Inject constructor(
     override suspend fun createSession(requestToken: String): Resource<Session> {
         return safeApiCall {
             movieService.createSession(BuildConfig.API_KEY, SessionRequest(requestToken))
+        }.transform {
+            it.toDomain()
+        }
+    }
+
+    override suspend fun getGenres(): Resource<List<Genre>> {
+        return safeApiCall {
+            movieService.getGenres()
         }.transform {
             it.toDomain()
         }

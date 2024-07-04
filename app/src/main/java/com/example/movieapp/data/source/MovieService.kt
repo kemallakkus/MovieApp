@@ -2,6 +2,7 @@ package com.example.movieapp.data.source
 
 import com.example.movieapp.data.dto.request.SessionRequest
 import com.example.movieapp.data.dto.response.DetailDto
+import com.example.movieapp.data.dto.response.GenreDto
 import com.example.movieapp.data.dto.response.MovieDto
 import com.example.movieapp.data.dto.response.SessionDto
 import com.example.movieapp.data.dto.response.TokenDto
@@ -38,4 +39,10 @@ interface MovieService {
         @Query("api_key") apiKey: String,
         @Body sessionRequest: SessionRequest,
     ): Response<SessionDto>
+
+    @GET("genre/tv/list")
+    suspend fun getGenres(
+        @Query("language") language: String = "en-US",
+    ): Response<List<GenreDto>>
+
 }

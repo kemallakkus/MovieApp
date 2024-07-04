@@ -114,5 +114,14 @@ dependencies {
     //Shimmer Effect
     implementation (libs.shimmer)
 
+    testImplementation (libs.androidx.core)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.truth)
+    testImplementation(libs.truth)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation (libs.robolectric)
+    testImplementation (libs.mockito.core)
+
     implementation(libs.retrofit2.kotlinx.serialization.converter)
 }

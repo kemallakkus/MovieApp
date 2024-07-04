@@ -2,9 +2,11 @@ package com.example.movieapp.ui.home
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movieapp.R
 import com.example.movieapp.common.base.BaseFragment
 import com.example.movieapp.common.extentions.handleLoadStates
@@ -20,18 +22,24 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private val homeAdapter by lazy {
         HomeAdapter(::onMovieClick)
     }
+    private val genresAdapter by lazy {
+        GenresAdapter()
+    }
 
     override fun setupViews() {
         with(binding) {
             rvMovies.adapter = homeAdapter
+            rvGenres.adapter = genresAdapter
         }
 
         collectLoadState()
     }
 
     override suspend fun collectStateInScope() {
-        viewModel.state.collectLatest { pagingData ->
-            homeAdapter.submitData(pagingData.movies)
+        viewModel.state.collectLatest { state ->
+            Log.d("adfasfasdas", "Genres: ${state.genres}")
+            homeAdapter.submitData(state.movies)
+            genresAdapter.submitList(state.genres)
         }
     }
 
@@ -43,6 +51,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                         putInt("id", effect.id)
                     }
                     findNavController().navigate(R.id.action_homeFragment_to_detailFragment, bundle)
+                }
+
+                is HomeEffect.ShowError -> {
+                    AlertDialog.Builder(requireContext())
+                        .setTitle("Error")
+                        .setMessage(effect.message)
+                        .setPositiveButton("OK") { dialog, _ ->
+                            dialog.dismiss()
+                        }
                 }
             }
         }
@@ -72,6 +89,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     override fun onDestroyView() {
         binding.rvMovies.adapter = null
+        binding.rvGenres.adapter = null
         super.onDestroyView()
     }
 }

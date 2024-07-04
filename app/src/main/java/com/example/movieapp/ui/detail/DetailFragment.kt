@@ -3,7 +3,6 @@ package com.example.movieapp.ui.detail
 import android.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.movieapp.R
 import com.example.movieapp.common.base.BaseFragment
 import com.example.movieapp.common.extentions.loadImage
 import com.example.movieapp.databinding.FragmentDetailBinding
@@ -46,7 +45,6 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
     override suspend fun collectStateInScope() {
         with(binding) {
             viewModel.state.collectLatest { state ->
-
                 ivMovie.loadImage(state.detail.posterPath)
                 tvMovieName.text = state.detail.name
                 tvMovieOverview.text = state.detail.overview

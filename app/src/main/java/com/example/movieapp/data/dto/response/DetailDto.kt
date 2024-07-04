@@ -13,7 +13,7 @@ data class DetailDto(
     val episodeRunTime: List<Int>? = null,
     @SerializedName("first_air_date")
     val firstAirDate: String? = null,
-    val genres: List<Genre>? = null,
+    val genres: List<GenreDto>? = null,
     val homepage: String? = null,
     val id: Int? = null,
     @SerializedName("in_production")

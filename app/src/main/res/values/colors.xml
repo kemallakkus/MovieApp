@@ -20,4 +20,5 @@
     <color name="gray50">#C4C4C7</color>
     <color name="gray80">#808080</color>
     <color name="dark_blue">#312E81</color>
+    <color name="genre_item_background">#022361</color>
 </resources>
