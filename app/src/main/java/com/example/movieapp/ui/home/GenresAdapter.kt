@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.databinding.ItemGenreBinding
 import com.example.movieapp.domain.model.Genre
 
-class GenresAdapter(): ListAdapter<Genre, GenresAdapter.GenreViewHolder>(GenreDiffUtilCallback()) {
+class GenresAdapter() : ListAdapter<Genre, GenresAdapter.GenreViewHolder>(GenreDiffUtilCallback()) {
 
     override fun onBindViewHolder(
         holder: GenreViewHolder,
@@ -19,7 +19,7 @@ class GenresAdapter(): ListAdapter<Genre, GenresAdapter.GenreViewHolder>(GenreDi
         ItemGenreBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
-    inner class GenreViewHolder(val binding: ItemGenreBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class GenreViewHolder(val binding: ItemGenreBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(genre: Genre) {
             binding.tvGenre.text = genre.name
         }

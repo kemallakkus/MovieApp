@@ -12,7 +12,7 @@ import com.example.movieapp.domain.model.Movie
 import com.example.movieapp.domain.repository.MovieRepository
 import com.example.movieapp.common.util.transform
 import com.example.movieapp.data.dto.request.SessionRequest
-import com.example.movieapp.domain.model.Genre
+import com.example.movieapp.domain.model.Genres
 import com.example.movieapp.domain.model.Session
 import com.example.movieapp.domain.model.Token
 import kotlinx.coroutines.flow.Flow
@@ -56,7 +56,7 @@ class MovieRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getGenres(): Resource<List<Genre>> {
+    override suspend fun getGenres(): Resource<Genres> {
         return safeApiCall {
             movieService.getGenres()
         }.transform {

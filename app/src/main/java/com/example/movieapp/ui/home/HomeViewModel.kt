@@ -1,16 +1,15 @@
 package com.example.movieapp.ui.home
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.movieapp.common.base.BaseViewModel
 import com.example.movieapp.domain.model.Movie
-import com.example.movieapp.common.util.Constants.EMPTY_STRING
 import com.example.movieapp.common.util.Resource
 import com.example.movieapp.domain.model.Genre
 import com.example.movieapp.domain.usecases.GetGenresUseCase
 import com.example.movieapp.domain.usecases.GetMoviesUseCase
-import com.example.movieapp.ui.detail.DetailEffect
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -19,10 +18,14 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val getMoviesUseCase: GetMoviesUseCase,
-    private val getGenresUseCase: GetGenresUseCase
+    private val getGenresUseCase: GetGenresUseCase,
 ) : BaseViewModel<HomeEvent, HomeState, HomeEffect>() {
 
-    override fun setInitialState() = HomeState(isLoading = false)
+    override fun setInitialState() = HomeState(
+        isLoading = false,
+        movies = PagingData.empty(),
+        genres = emptyList()
+    )
 
     override fun handleEvents(event: HomeEvent) {
         when (event) {
@@ -41,11 +44,14 @@ class HomeViewModel @Inject constructor(
 
     private fun getGenres() {
         viewModelScope.launch {
-            getGenresUseCase().collect { resource ->
+            getGenresUseCase().collectLatest { resource ->
                 when (resource) {
                     is Resource.Success -> {
                         setState {
-                            copy(genres = resource.data)
+                            Log.d("HomeViewModel", "Genres loaded: ${resource.data.genres}")
+                            copy(
+                                genres = resource.data.genres
+                            )
                         }
                     }
 
@@ -76,7 +82,7 @@ sealed interface HomeEffect {
 }
 
 data class HomeState(
-    val movies: PagingData<Movie> = PagingData.empty(),
-    val genres: List<Genre> = emptyList(),
-    val isLoading: Boolean = false
+    val movies: PagingData<Movie>,
+    val genres: List<Genre>,
+    val isLoading: Boolean,
 )

@@ -10,7 +10,9 @@ class GetGenresUseCase @Inject constructor(
 ) {
     operator fun invoke() = flow {
         emit(
-            movieRepository.getGenres().transform { it }
+            movieRepository.getGenres().transform {
+                it
+            }
         )
     }
 }
