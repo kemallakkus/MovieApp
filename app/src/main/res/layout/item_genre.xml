@@ -10,7 +10,7 @@
         android:id="@+id/tv_genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@color/gray90"
         android:fontFamily="@font/worksans_bold"
         tools:text="selam"
         android:background="@drawable/bg_back_icon"

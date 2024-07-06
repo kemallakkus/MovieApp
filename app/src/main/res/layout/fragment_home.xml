@@ -58,6 +58,7 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         app:spanCount="2"
+        android:layout_marginTop="@dimen/margin_small"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

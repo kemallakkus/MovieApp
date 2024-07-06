@@ -25,7 +25,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         with(binding) {
             rvMovies.adapter = homeAdapter
             rvGenres.adapter = genresAdapter
-            rvGenres.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         }
 
         collectLoadState()
