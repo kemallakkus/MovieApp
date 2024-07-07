@@ -19,19 +19,14 @@ class ViewExtensionsTest {
 
     @Test
     fun testVisibleExtension() {
-        // Bağlamı alın
         val context: Context = RuntimeEnvironment.getApplication()
 
-        // Bir View nesnesi oluşturun
         val view = View(context)
 
-        // Başlangıçta görünürlüğün GONE olduğunu varsayalım
         view.visibility = View.GONE
 
-        // visible() fonksiyonunu çağırın
         view.visible()
 
-        // Görünürlüğün VISIBLE olup olmadığını kontrol edin
         assertEquals(View.VISIBLE, view.visibility)
     }
 }
