@@ -23,8 +23,6 @@ class HomeViewModel @Inject constructor(
 
     override fun setInitialState() = HomeState(
         isLoading = false,
-        movies = PagingData.empty(),
-        genres = emptyList()
     )
 
     override fun handleEvents(event: HomeEvent) {
@@ -82,7 +80,7 @@ sealed interface HomeEffect {
 }
 
 data class HomeState(
-    val movies: PagingData<Movie>,
-    val genres: List<Genre>,
+    val movies: PagingData<Movie> = PagingData.empty(),
+    val genres: List<Genre> = emptyList(),
     val isLoading: Boolean,
 )
