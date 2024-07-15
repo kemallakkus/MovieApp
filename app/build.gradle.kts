@@ -36,6 +36,7 @@ android {
     buildFeatures {
         buildConfig = true
         viewBinding = true
+        compose = true
     }
 
     buildTypes {
@@ -52,6 +53,10 @@ android {
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
             buildConfigField("String", "API_KEY", "\"$apiKey\"")
         }
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.3.1" // Compose'un uyumlu olduğu sürümü kontrol edin
     }
 
     compileOptions {
@@ -124,4 +129,13 @@ dependencies {
     testImplementation (libs.mockito.core)
 
     implementation(libs.retrofit2.kotlinx.serialization.converter)
+
+    implementation (libs.androidx.activity.compose)
+    implementation (libs.androidx.ui)
+    implementation (libs.androidx.material)
+    implementation (libs.androidx.ui.tooling.preview)
+    implementation (libs.androidx.lifecycle.runtime.ktx)
+    implementation (libs.androidx.runtime.livedata)
+    implementation (libs.androidx.navigation.compose)
+    debugImplementation (libs.androidx.ui.tooling)
 }
