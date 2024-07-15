@@ -129,20 +129,4 @@ dependencies {
     testImplementation (libs.mockito.core)
 
     implementation(libs.retrofit2.kotlinx.serialization.converter)
-
-    implementation (libs.androidx.activity.compose)
-    implementation (libs.androidx.ui)
-    implementation (libs.androidx.ui.tooling.preview)
-    implementation (libs.androidx.lifecycle.runtime.ktx)
-    implementation (libs.androidx.runtime.livedata)
-    implementation (libs.androidx.navigation.compose)
-    debugImplementation (libs.androidx.ui.tooling)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(platform(libs.kotlin.bom))
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.coil.compose)
-    implementation(libs.androidx.foundation)
-    implementation(libs.androidx.paging.compose)
 }
