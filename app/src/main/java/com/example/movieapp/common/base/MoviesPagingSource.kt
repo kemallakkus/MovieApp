@@ -58,7 +58,7 @@ class MoviesPagingSource<Value : Any>(
 }
 
 fun <T : Any> safeApiCallPaging(
-    loadDataFromApi: suspend (page: Int, pageSize: Int) -> Resource<List<T>>
+    loadDataFromApi: suspend (page: Int, pageSize: Int) -> Resource<List<T>>,
 ): Flow<PagingData<T>> {
     return setPager(
         pagingSourceFactory = {

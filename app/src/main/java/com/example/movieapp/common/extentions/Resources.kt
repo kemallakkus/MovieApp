@@ -39,6 +39,7 @@ fun EditText.setFont(font: Int) {
 fun Context.getDimenInt(@DimenRes resId: Int): Int {
     return resources.getDimensionPixelSize(resId)
 }
+
 fun ConstraintLayout.getDimenFloat(dimen: Int) = resources.getDimension(dimen)
 
 fun View.setMargin(left: Int? = null, right: Int? = null, top: Int? = null, bottom: Int? = null) {

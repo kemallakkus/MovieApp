@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 fun CombinedLoadStates.handleLoadStates(
     shimmerEffect: View,
     recyclerView: RecyclerView,
-    onError: (LoadState.Error) -> Unit
+    onError: (LoadState.Error) -> Unit,
 ) {
     setLoadState(refresh, shimmerEffect, recyclerView, onError)
 
