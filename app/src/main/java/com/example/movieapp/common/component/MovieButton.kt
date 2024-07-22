@@ -103,7 +103,7 @@ class MovieButton @JvmOverloads constructor(
 
     fun setButtonType(buttonType: ButtonType) {
         when (buttonType) {
-            ButtonType.GREEN -> setType(R.color.green, R.color.white)
+            ButtonType.BLUE -> setType(R.color.blue, R.color.white)
             ButtonType.PURPLE -> setType(R.color.purple, R.color.white)
             ButtonType.PURPLE_LIGHT -> setType(R.color.purple_lightest, R.color.purple)
             ButtonType.WHITE -> setType(R.color.white, R.color.gray90)
@@ -132,7 +132,7 @@ class MovieButton @JvmOverloads constructor(
     }
 
     enum class ButtonType {
-        GREEN, PURPLE, WHITE, BACKGROUND_WHITE, BLACK, GRAY, PURPLE_LIGHT
+        BLUE, PURPLE, WHITE, BACKGROUND_WHITE, BLACK, GRAY, PURPLE_LIGHT
     }
 }
 

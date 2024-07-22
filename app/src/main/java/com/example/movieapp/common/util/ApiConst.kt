@@ -8,4 +8,6 @@ object APIConst {
     const val GET_GENRES = "genre/tv/list"
     const val CREATE_TOKEN = "authentication/token/new"
     const val CREATE_SESSION = "authentication/session/new"
+    const val VALIDATE_TOKEN = "authentication/token/validate_with_login"
+
 }
