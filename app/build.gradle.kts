@@ -36,7 +36,6 @@ android {
     buildFeatures {
         buildConfig = true
         viewBinding = true
-        compose = true
     }
 
     buildTypes {
@@ -53,10 +52,6 @@ android {
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
             buildConfigField("String", "API_KEY", "\"$apiKey\"")
         }
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.3.1" // Compose'un uyumlu olduğu sürümü kontrol edin
     }
 
     compileOptions {
