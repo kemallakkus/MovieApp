@@ -6,7 +6,7 @@ import com.example.movieapp.data.dto.response.GenresDto
 import com.example.movieapp.domain.model.Genre
 import com.example.movieapp.domain.model.Genres
 
-fun GenresDto.toDomain() = Genres (
+fun GenresDto.toDomain() = Genres(
     genres = genres?.map { it.toGenre() }.orEmpty()
 )
 

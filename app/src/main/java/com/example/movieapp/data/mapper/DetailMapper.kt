@@ -8,7 +8,7 @@ import com.example.movieapp.common.util.orZero
 import java.util.Locale
 
 /**
- DTO'ları domain modeline dönüştürür.
+DTO'ları domain modeline dönüştürür.
  */
 fun DetailDto.toDomain() = Detail(
     backdropPath = ORIGINAL_IMAGE_URL + backdropPath.orEmpty(),
