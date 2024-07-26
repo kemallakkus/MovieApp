@@ -5,13 +5,16 @@ import androidx.lifecycle.viewModelScope
 import com.example.movieapp.common.base.BaseViewModel
 import com.example.movieapp.common.util.Resource
 import com.example.movieapp.domain.repository.MovieRepository
+import com.example.movieapp.domain.usecases.CreateRequestTokenUseCase
+import com.example.movieapp.domain.usecases.CreateSessionUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
-    private val movieRepository: MovieRepository,
+    private val createRequestTokenUseCase: CreateRequestTokenUseCase,
+    private val createSessionUseCase: CreateSessionUseCase,
     private val sharedPreferences: SharedPreferences
 ) : BaseViewModel<AuthEvent, AuthState, AuthEffect>() {
 
@@ -27,56 +30,62 @@ class AuthViewModel @Inject constructor(
     private fun createRequestToken() {
         setState { copy(isLoading = true) }
         viewModelScope.launch {
-            when (val result = movieRepository.createRequestToken()) {
-                is Resource.Success -> {
-                    val requestToken = result.data.requestToken
-                    val authUrl = "https://www.themoviedb.org/authenticate/$requestToken?redirect_to=movieapp://auth"
-                    setState {
-                        copy(
-                            isLoading = false,
-                            requestToken = requestToken
-                        )
+            createRequestTokenUseCase().collect { resource ->
+                when (resource) {
+                    is Resource.Success -> {
+                        val requestToken = resource.data.requestToken
+                        //val authUrl = "https://www.themoviedb.org/authenticate/$requestToken?redirect_to=movieapp://auth"
+                        setState {
+                            copy(
+                                isLoading = false,
+                                requestToken = requestToken
+                            )
+                        }
+//                        setEffect {
+//                            AuthEffect.OpenAuthUrl(
+//                                authUrl
+//                            )
+//                        }
                     }
-                    setEffect {
-                        AuthEffect.OpenAuthUrl(
-                            authUrl
-                        )
-                    }
-                }
 
-                is Resource.Error -> {
-                    setState { copy(isLoading = false) }
-                    setEffect { AuthEffect.ShowError(result.error) }
+                    is Resource.Error -> {
+                        setState { copy(isLoading = false) }
+                        setEffect { AuthEffect.ShowError(resource.error) }
+                    }
                 }
             }
+
         }
     }
 
     private fun createSession(requestToken: String) {
         setState { copy(isLoading = true) }
         viewModelScope.launch {
-            when (val result = movieRepository.createSession(requestToken)) {
-                is Resource.Success -> {
-                    val sessionId = result.data.sessionId
-                    saveSessionId(sessionId)
-                    setState {
-                        copy(
-                            isLoading = false,
-                            sessionId = sessionId
-                        )
+            createSessionUseCase(requestToken).collect { resource ->
+                when (resource) {
+                    is Resource.Success -> {
+                        val sessionId = resource.data.sessionId
+                        saveSessionId(sessionId)
+                        setState {
+                            copy(
+                                isLoading = false,
+                                sessionId = sessionId
+                            )
+                        }
+                        setEffect {
+                            AuthEffect.NavigateToHome(
+                                sessionId
+                            )
+                        }
                     }
-                    setEffect {
-                        AuthEffect.NavigateToHome(
-                            sessionId
-                        )
-                    }
-                }
 
-                is Resource.Error -> {
-                    setState { copy(isLoading = false) }
-                    setEffect { AuthEffect.ShowError(result.error) }
+                    is Resource.Error -> {
+                        setState { copy(isLoading = false) }
+                        setEffect { AuthEffect.ShowError(resource.error) }
+                    }
                 }
             }
+
         }
     }
 
@@ -93,7 +102,7 @@ sealed interface AuthEvent {
 sealed interface AuthEffect {
     data class ShowError(val message: String) : AuthEffect
     data class NavigateToHome(val sessionId: String) : AuthEffect
-    data class OpenAuthUrl(val url: String) : AuthEffect
+    //data class OpenAuthUrl(val url: String) : AuthEffect
 }
 
 data class AuthState(
