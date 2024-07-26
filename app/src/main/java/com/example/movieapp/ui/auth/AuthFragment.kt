@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.movieapp.R
 import com.example.movieapp.common.base.BaseFragment
+import com.example.movieapp.data.dto.request.LoginRequest
 import com.example.movieapp.databinding.FragmentAuthBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -18,14 +19,25 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::infl
     private val viewModel: AuthViewModel by viewModels()
 
     override fun setupViews() {
-        binding.loginButton.setOnClickListener {
-            viewModel.setEvent(AuthEvent.CreateRequestToken)
+        with(binding) {
+            loginButton.setOnClickListener {
+                val username = etUsername.text.toString()
+                val password = etPassword.text.toString()
+                viewModel.setEvent(
+                    AuthEvent.ValidateToken(
+                        LoginRequest(
+                            username = username,
+                            password = password,
+                            requestToken = viewModel.state.value.requestToken?.requestToken ?: "",
+                        )
+                    )
+                )
+            }
         }
-
-        val requestToken = arguments?.getString("request_token")
-        requestToken?.let {
-            viewModel.setEvent(AuthEvent.CreateSession(it))
-        }
+//        val requestToken = arguments?.getString("request_token")
+//        requestToken?.let {
+//            viewModel.setEvent(AuthEvent.CreateSession(it))
+//        }
 
         collectEffect()
     }
@@ -40,11 +52,6 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::infl
 
                     is AuthEffect.NavigateToHome -> {
                         findNavController().navigate(R.id.action_authFragment_to_homeFragment)
-                    }
-
-                    is AuthEffect.OpenAuthUrl -> {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(effect.url))
-                        startActivity(intent)
                     }
                 }
             }

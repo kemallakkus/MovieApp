@@ -11,10 +11,12 @@ import com.example.movieapp.domain.model.Detail
 import com.example.movieapp.domain.model.Movie
 import com.example.movieapp.domain.repository.MovieRepository
 import com.example.movieapp.common.util.transform
+import com.example.movieapp.data.dto.request.LoginRequest
 import com.example.movieapp.data.dto.request.SessionRequest
 import com.example.movieapp.domain.model.Genres
 import com.example.movieapp.domain.model.Session
 import com.example.movieapp.domain.model.Token
+import com.example.movieapp.domain.model.ValidateToken
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -43,6 +45,14 @@ class MovieRepositoryImpl @Inject constructor(
     override suspend fun createRequestToken(): Resource<Token> {
         return safeApiCall {
             movieService.createRequestToken(BuildConfig.API_KEY)
+        }.transform {
+            it.toDomain()
+        }
+    }
+
+    override suspend fun validateToken(loginRequest: LoginRequest): Resource<ValidateToken> {
+        return safeApiCall {
+            movieService.validateToken(loginRequest)
         }.transform {
             it.toDomain()
         }

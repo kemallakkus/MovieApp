@@ -4,9 +4,14 @@ import android.content.SharedPreferences
 import androidx.lifecycle.viewModelScope
 import com.example.movieapp.common.base.BaseViewModel
 import com.example.movieapp.common.util.Resource
+import com.example.movieapp.data.dto.request.LoginRequest
+import com.example.movieapp.domain.model.Session
+import com.example.movieapp.domain.model.Token
+import com.example.movieapp.domain.model.ValidateToken
 import com.example.movieapp.domain.repository.MovieRepository
 import com.example.movieapp.domain.usecases.CreateRequestTokenUseCase
 import com.example.movieapp.domain.usecases.CreateSessionUseCase
+import com.example.movieapp.domain.usecases.ValidateTokenUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -15,16 +20,26 @@ import javax.inject.Inject
 class AuthViewModel @Inject constructor(
     private val createRequestTokenUseCase: CreateRequestTokenUseCase,
     private val createSessionUseCase: CreateSessionUseCase,
-    private val sharedPreferences: SharedPreferences
+    private val validateTokenUseCase: ValidateTokenUseCase,
+    private val sharedPreferences: SharedPreferences,
 ) : BaseViewModel<AuthEvent, AuthState, AuthEffect>() {
 
     override fun setInitialState() = AuthState()
 
     override fun handleEvents(event: AuthEvent) {
         when (event) {
-            is AuthEvent.CreateRequestToken -> createRequestToken()
-            is AuthEvent.CreateSession -> createSession(event.requestToken)
+            is AuthEvent.ValidateToken -> validateToken(
+                LoginRequest(
+                    event.loginRequest.username,
+                    event.loginRequest.password,
+                    event.loginRequest.requestToken
+                )
+            )
         }
+    }
+
+    init {
+        createRequestToken()
     }
 
     private fun createRequestToken() {
@@ -33,19 +48,12 @@ class AuthViewModel @Inject constructor(
             createRequestTokenUseCase().collect { resource ->
                 when (resource) {
                     is Resource.Success -> {
-                        val requestToken = resource.data.requestToken
-                        //val authUrl = "https://www.themoviedb.org/authenticate/$requestToken?redirect_to=movieapp://auth"
                         setState {
                             copy(
                                 isLoading = false,
-                                requestToken = requestToken
+                                requestToken = resource.data
                             )
                         }
-//                        setEffect {
-//                            AuthEffect.OpenAuthUrl(
-//                                authUrl
-//                            )
-//                        }
                     }
 
                     is Resource.Error -> {
@@ -54,7 +62,31 @@ class AuthViewModel @Inject constructor(
                     }
                 }
             }
+        }
+    }
 
+    private fun validateToken(loginRequest: LoginRequest) {
+        setState { copy(isLoading = true) }
+        viewModelScope.launch {
+            validateTokenUseCase(loginRequest).collect { resource ->
+                when (resource) {
+                    is Resource.Success -> {
+                        val token = resource.data.requestToken
+                        setState {
+                            copy(
+                                isLoading = false,
+                                validateToken = resource.data
+                            )
+                        }
+                        createSession(token)
+                    }
+
+                    is Resource.Error -> {
+                        setState { copy(isLoading = false) }
+                        setEffect { AuthEffect.ShowError(resource.error) }
+                    }
+                }
+            }
         }
     }
 
@@ -69,7 +101,7 @@ class AuthViewModel @Inject constructor(
                         setState {
                             copy(
                                 isLoading = false,
-                                sessionId = sessionId
+                                sessionId = resource.data
                             )
                         }
                         setEffect {
@@ -95,18 +127,17 @@ class AuthViewModel @Inject constructor(
 }
 
 sealed interface AuthEvent {
-    data object CreateRequestToken : AuthEvent
-    data class CreateSession(val requestToken: String) : AuthEvent
+    data class ValidateToken(val loginRequest: LoginRequest) : AuthEvent
 }
 
 sealed interface AuthEffect {
     data class ShowError(val message: String) : AuthEffect
     data class NavigateToHome(val sessionId: String) : AuthEffect
-    //data class OpenAuthUrl(val url: String) : AuthEffect
 }
 
 data class AuthState(
     val isLoading: Boolean = false,
-    val requestToken: String? = null,
-    val sessionId: String? = null,
+    val requestToken: Token? = null,
+    val sessionId: Session? = null,
+    val validateToken: ValidateToken? = null,
 )
