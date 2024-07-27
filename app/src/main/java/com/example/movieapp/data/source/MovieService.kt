@@ -4,10 +4,12 @@ import com.example.movieapp.common.util.APIConst.CREATE_SESSION
 import com.example.movieapp.common.util.APIConst.CREATE_TOKEN
 import com.example.movieapp.common.util.APIConst.GET_DETAIL
 import com.example.movieapp.common.util.APIConst.GET_GENRES
+import com.example.movieapp.common.util.APIConst.GET_ME
 import com.example.movieapp.common.util.APIConst.GET_MOVIES
 import com.example.movieapp.common.util.APIConst.VALIDATE_TOKEN
 import com.example.movieapp.data.dto.request.LoginRequest
 import com.example.movieapp.data.dto.request.SessionRequest
+import com.example.movieapp.data.dto.response.AccountDto
 import com.example.movieapp.data.dto.response.DetailDto
 import com.example.movieapp.data.dto.response.GenresDto
 import com.example.movieapp.data.dto.response.MovieDto
@@ -17,6 +19,7 @@ import com.example.movieapp.data.dto.response.ValidateTokenDto
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -58,4 +61,8 @@ interface MovieService {
         @Query("language") language: String = "en-US",
     ): Response<GenresDto>
 
+    @GET(GET_ME)
+    suspend fun getMe(
+        @Path("account_id") accountId: Int,
+    ): Response<AccountDto>
 }

@@ -3,6 +3,7 @@ package com.example.movieapp.domain.repository
 import androidx.paging.PagingData
 import com.example.movieapp.common.util.Resource
 import com.example.movieapp.data.dto.request.LoginRequest
+import com.example.movieapp.domain.model.Account
 import com.example.movieapp.domain.model.Detail
 import com.example.movieapp.domain.model.Genres
 import com.example.movieapp.domain.model.Movie
@@ -18,5 +19,5 @@ interface MovieRepository {
     suspend fun createSession(requestToken: String): Resource<Session>
     suspend fun getGenres(): Resource<Genres>
     suspend fun validateToken(loginRequest: LoginRequest): Resource<ValidateToken>
-
+    suspend fun getMe(accountId: Int): Resource<Account>
 }

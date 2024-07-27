@@ -13,6 +13,8 @@ import com.example.movieapp.domain.repository.MovieRepository
 import com.example.movieapp.common.util.transform
 import com.example.movieapp.data.dto.request.LoginRequest
 import com.example.movieapp.data.dto.request.SessionRequest
+import com.example.movieapp.data.mapper.toAccount
+import com.example.movieapp.domain.model.Account
 import com.example.movieapp.domain.model.Genres
 import com.example.movieapp.domain.model.Session
 import com.example.movieapp.domain.model.Token
@@ -71,6 +73,14 @@ class MovieRepositoryImpl @Inject constructor(
             movieService.getGenres()
         }.transform {
             it.toDomain()
+        }
+    }
+
+    override suspend fun getMe(accountId: Int): Resource<Account> {
+        return safeApiCall {
+            movieService.getMe(accountId)
+        }.transform {
+            it.toAccount()
         }
     }
 }

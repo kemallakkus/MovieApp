@@ -10,4 +10,8 @@
     <string name="created_by">Created By</string>
     <string name="movie_app">Movie App</string>
     <string name="login_or_register">Giriş Yapın veya Hesap Oluşturun</string>
+    <string name="home">Home</string>
+    <string name="favorite">Favorite</string>
+    <string name="profile">Profile</string>
+    <string name="username">username</string>
 </resources>

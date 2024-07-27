@@ -9,4 +9,8 @@
         <item name="colorControlNormal">@color/light_yellow</item>
         <item name="colorControlActivated">@color/yellow</item>
     </style>
+    <style name="MyBottomNavViewStyle" parent="Widget.Design.BottomNavigationView">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:minHeight">60dp</item>
+    </style>
 </resources>

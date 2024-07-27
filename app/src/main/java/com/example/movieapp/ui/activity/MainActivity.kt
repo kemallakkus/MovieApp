@@ -3,10 +3,12 @@ package com.example.movieapp.ui.activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import com.example.movieapp.R
 import com.example.movieapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,13 +24,28 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navController = navHostFragment.navController
+        with(binding) {
+            val navHostFragment = supportFragmentManager
+                .findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+            navController = navHostFragment.navController
 
-        if (intent?.action == Intent.ACTION_VIEW) {
-            handleIntent(intent)
+            NavigationUI.setupWithNavController(bottomNavView, navController)
+
+            val fragmentList = arrayListOf(
+                R.id.homeFragment,
+                R.id.favoriteFragment,
+                R.id.profileFragment
+            )
+
+            navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
+                bottomNavView.isVisible = fragmentList.contains(destination.id)
+            }
+
+            if (intent?.action == Intent.ACTION_VIEW) {
+                handleIntent(intent)
+            }
         }
+
     }
 
     override fun onNewIntent(intent: Intent) {
