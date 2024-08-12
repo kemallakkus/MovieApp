@@ -24,7 +24,6 @@
 - Room
 - Jetpack Navigation
 - ViewModel
-- LiveData
 - Paging 3
 
 ## Installation
